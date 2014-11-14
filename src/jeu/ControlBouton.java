@@ -9,4 +9,12 @@ import java.awt.event.ActionListener;
  * Created by Berenice on 12/11/14.
  */
 public class ControlBouton implements ActionListener {
+
+    Fenetre fenetre;
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
 }
