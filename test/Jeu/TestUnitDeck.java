@@ -10,6 +10,6 @@ public class TestUnitDeck {
     @Test
     public void TestInitTailleDeck() {
         Deck deck = new Deck();
-        Assert.assertEquals(24, deck.initDeck());
+        Assert.assertEquals(24, deck.tailleDeck());
     }
 }

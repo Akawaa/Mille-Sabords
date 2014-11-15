@@ -14,7 +14,7 @@ public class Deck {
         initDeck();
     }
 
-    public int initDeck() {
+    public void initDeck() {
         //initialisation du deck avec 24 carte, 3 de chaque (en attendant de savoir exactement combien de carte il y a dans le jeu)
         for (int i = 0 ; i<3; i++){
             deckList.add(new CarteAnimaux());
@@ -26,6 +26,9 @@ public class Deck {
             deckList.add(new CarteTeteMort());
             deckList.add(new CarteIleTresor());
         }
+    }
+
+    public int tailleDeck() {
         return deckList.size();
     }
 
