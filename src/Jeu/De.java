@@ -39,6 +39,13 @@ public class De {
         return KEY[random.nextInt(6)];
     }
 
+    public ArrayList creerListFaces(int nbrDes) {
+        ArrayList<String> listFaces = new ArrayList<String>();
+        for(int i=0;i<nbrDes;i++){
+            listFaces.add(lanceDe());
+        }
+        return listFaces;
+    }
 
 
     //------------------GETTER and SETTER

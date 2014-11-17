@@ -3,9 +3,6 @@ package Jeu;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by quentin on 16/11/14.
@@ -19,4 +16,15 @@ public class TestUnitDe {
         De de = new De();
         Assert.assertTrue(de.getFaces().containsKey(de.lanceDe()));
     }
+
+    //Test de génération de 8 lancer avec le dé
+    //La méthode creerListFaces réutilise lanceDe() testée précédement
+    @Test
+    public void testCreerListFaces(){
+        De de = new De();
+        Assert.assertEquals(8, de.creerListFaces(8).size());
+    }
+
+    //@Test
+
 }
