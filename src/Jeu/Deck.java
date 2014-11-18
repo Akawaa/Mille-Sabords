@@ -1,7 +1,7 @@
 package Jeu;
 
 import java.util.ArrayList;
-import java.util.*;
+import java.util.List;
 
 /**
  * Created by ravier on 15/11/14.
@@ -12,6 +12,7 @@ public class Deck {
     public Deck() {
         deckList = new ArrayList<Carte>();
         initDeck();
+        shuffle(); //adapte ta méthode stp aurélien
     }
 
     public void initDeck() {
@@ -32,11 +33,17 @@ public class Deck {
         return deckList.size();
     }
 
-    public void melangerDeck() { // Melange deck
-        Collections.shuffle(deckList);
+    public Carte piocheCarte() { //à utiliser dans la gestion de la partie
+        if (deckList.size() == 0){
+            deckList = new ArrayList<Carte>();
+            initDeck();
+            shuffle();// adapte ta méthode stp aurélien
+        }
+        Carte cartePiochee;
+        cartePiochee = deckList.get(deckList.size()-1);
+        deckList.remove(deckList.size()-1);
+        return cartePiochee;
     }
 
-    public List<Carte> getDeckList() {
-        return deckList;
-    }
+
 }
