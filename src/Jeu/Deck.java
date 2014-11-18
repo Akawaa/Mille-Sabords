@@ -32,7 +32,7 @@ public class Deck {
         return deckList.size();
     }
 
-    public void melangerDeck() {
+    public void melangerDeck() { // Melange deck
         Collections.shuffle(deckList);
     }
 
