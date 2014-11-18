@@ -1,6 +1,10 @@
 package Jeu;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,7 +16,7 @@ public class Deck {
     public Deck() {
         deckList = new ArrayList<Carte>();
         initDeck();
-        shuffle(); //adapte ta méthode stp aurélien
+        //mélanger dans la partie du joueur
     }
 
     public void initDeck() {
@@ -33,11 +37,15 @@ public class Deck {
         return deckList.size();
     }
 
+    public void melangerDeck() { // Melange deck
+        Collections.shuffle(deckList);
+    }
+
     public Carte piocheCarte() { //à utiliser dans la gestion de la partie
         if (deckList.size() == 0){
             deckList = new ArrayList<Carte>();
             initDeck();
-            shuffle();// adapte ta méthode stp aurélien
+            melangerDeck();
         }
         Carte cartePiochee;
         cartePiochee = deckList.get(deckList.size()-1);
