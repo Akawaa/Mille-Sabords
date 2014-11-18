@@ -27,7 +27,7 @@ public class TestUnitDe {
 
     //Test permettant de savoir si le nombre de dès lancés est < 1
     //La méthode creerListFaces renvoie une exception si oui
-    //Grosso merdo le mec qui fait sa est un kamikaze ^__^
+    //Grosso merdo le mec qui fait ca est un kamikaze ^__^
     @Test(expected = ListFacesInferieurA1Exception.class)
     public void testCreerListFacesJamaisInferieurA1() throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
         De de = new De();
@@ -36,7 +36,7 @@ public class TestUnitDe {
 
     //Test permettant de savoir si le nombre de dès lancés est > 8
     //La méthode creerListFaces renvoie une exception si oui
-    //Grosso merdo le mec qui fait sa est un tricheur ^__^ Héhé oui petit malin :P
+    //Grosso merdo le mec qui fait ca est un tricheur ^__^ Héhé oui petit malin :P
     @Test(expected = ListFacesSuperieurA8Exception.class)
     public void testCreerListFacesJamaisSuperieurA8() throws ListFacesSuperieurA8Exception, ListFacesInferieurA1Exception {
         De de = new De();
