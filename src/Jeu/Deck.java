@@ -53,5 +53,8 @@ public class Deck {
         return cartePiochee;
     }
 
+    public List<Carte> getDeckList() {
+        return deckList;
+    }
 
 }
