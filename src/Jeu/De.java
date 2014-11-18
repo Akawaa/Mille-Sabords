@@ -39,7 +39,14 @@ public class De {
         return KEY[random.nextInt(6)];
     }
 
-    public ArrayList creerListFaces(int nbrDes) {
+    public ArrayList creerListFaces(int nbrDes) throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
+        if(nbrDes < 1){
+            throw new ListFacesInferieurA1Exception();
+        }
+        if(nbrDes > 8){
+            throw new ListFacesSuperieurA8Exception();
+        }
+
         ArrayList<String> listFaces = new ArrayList<String>();
         for(int i=0;i<nbrDes;i++){
             listFaces.add(lanceDe());
@@ -48,11 +55,9 @@ public class De {
     }
 
 
-    //------------------GETTER and SETTER
+    //------------------GETTERS and SETTERS
     public HashMap getFaces(){
         return faces;
     }
-
-
 
 }
