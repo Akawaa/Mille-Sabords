@@ -12,4 +12,14 @@ public class TestUnitDeck {
         Deck deck = new Deck();
         Assert.assertEquals(24, deck.tailleDeck());
     }
+
+    @Test
+    public void TestMelangerDeck() {
+        Deck deck = new Deck();
+        Deck deck2 = new Deck();
+
+        deck.melangerDeck();
+
+        Assert.assertFalse(deck.getDeckList().equals(deck2.getDeckList()));
+    }
 }

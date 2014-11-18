@@ -1,7 +1,7 @@
 package Jeu;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ravier on 15/11/14.
@@ -32,5 +32,11 @@ public class Deck {
         return deckList.size();
     }
 
+    public void melangerDeck() {
+        Collections.shuffle(deckList);
+    }
 
+    public List<Carte> getDeckList() {
+        return deckList;
+    }
 }
