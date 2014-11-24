@@ -1,6 +1,7 @@
 package Jeu;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Berenice on 14/11/14.
@@ -22,13 +23,21 @@ public class View extends JFrame {
     JMenuItem exit;
 
     /*JBUTTON*/
-    JButton contentDeck;
+    JButton jbContentDeck;
+    JButton jbN;//test
+    JButton jbs;//test
+    JButton jbe;//test
+    JButton jbc;//test
+    JButton jbb;//test
+
 
 
     public View() {
-
+        this.setLayout(new BorderLayout());
         initMenu();
         initFenetreGame();
+        initDeckGraphic(); //partie graphique du deck
+
 
         setSize(1200,800);
         setResizable(false);
@@ -60,6 +69,33 @@ public class View extends JFrame {
 
     public void initFenetreGame() {
         jpGeneral = new JPanel();
+        jpBot = new JPanel();
+        jpCenter = new JPanel();
+        jpLeft = new JPanel();
+        jpRigth = new JPanel();
+        jpTop = new JPanel();
+
+        jpGeneral.add(jpLeft, BorderLayout.WEST);
+        jpGeneral.add(jpBot, BorderLayout.SOUTH);
+        jpGeneral.add(jpCenter, BorderLayout.CENTER);
+        jpGeneral.add(jpRigth, BorderLayout.EAST);
+        jpGeneral.add(jpTop, BorderLayout.NORTH);
+        setContentPane(jpGeneral);
+    }
+
+    public void initDeckGraphic() {
+        jbContentDeck = new JButton("Deck");
+        jbb = new JButton("bottom");//test
+        jbc = new JButton("center");//test
+        jbe = new JButton("est");//test
+        jbN = new JButton("north");//test
+
+        jpBot.add(jbb);//test
+        jpCenter.add(jbc);//test
+        jpRigth.add(jbe);//test
+        jpTop.add(jbN);//test
+        jpLeft.add(jbContentDeck);
+        jbContentDeck.setPreferredSize(new Dimension(125, 125));
     }
 
 
