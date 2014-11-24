@@ -6,6 +6,13 @@ import javax.swing.*;
  * Created by Berenice on 14/11/14.
  */
 public class View extends JFrame {
+    /*JPANEL*/
+    JPanel jpGeneral; //Général, tout les JPanels de la fenêtre seront dans ce JPanel général
+    JPanel jpTop;     //Zone du haut
+    JPanel jpLeft;    //Zone de gauche
+    JPanel jpBot;     //Zone bas
+    JPanel jpRigth;   //Zone droite
+    JPanel jpCenter;  //zone centrale
 
     /*MENU*/
     JMenuBar barMenu;
@@ -14,9 +21,14 @@ public class View extends JFrame {
     JMenuItem help;
     JMenuItem exit;
 
+    /*JBUTTON*/
+    JButton contentDeck;
+
+
     public View() {
 
         initMenu();
+        initFenetreGame();
 
         setSize(1200,800);
         setResizable(false);
@@ -44,6 +56,10 @@ public class View extends JFrame {
 
         setJMenuBar(barMenu);
 
+    }
+
+    public void initFenetreGame() {
+        jpGeneral = new JPanel();
     }
 
 
