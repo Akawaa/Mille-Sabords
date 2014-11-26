@@ -2,13 +2,19 @@ package Jeu;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
- * Created by Berenice on 14/11/14......
+ * Created by Berenice on 14/11/14.
+ */
+
+/**
+ *  Information par Aurélien :
+ *  Afin de placer les éléments graphique ou l'on veut dans une fenetre, il faut travailler avec setBounds()
+ *  Cependant ce n'est pas compatible avec des layout définit, donc plus largement incompatible avec des JPanel
  */
 public class View extends JFrame {
-    /*JPANEL*/
-    JPanel jpGeneral; //Général, tout les JPanels de la fenêtre seront dans ce JPanel général
 
 
     /*MENU*/
@@ -22,19 +28,14 @@ public class View extends JFrame {
     JButton jbContentDeck;
 
 
-
     public View() {
-        this.setLayout(null);
-        initMenu();
-        initFenetreGame();
-        initDeckGraphic(); //partie graphique du deck
+        setLayout(null);    // layout null pour le placement libre des objets
+        initMenu();         // Initialisation du menu du jeu
+        initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
 
-
-        setSize(1200,800);
-        setResizable(false);
-        setVisible(true);
+        setSize(800,500);       // Définition de la taille de la fenêtre de jeu
+        setResizable(false);    // Taille fixe afin d'éviter les problèmes de positionnement
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     private void initMenu() {
@@ -55,27 +56,48 @@ public class View extends JFrame {
         barMenu.add(menu);
 
         setJMenuBar(barMenu);
-
-    }
-
-    public void initFenetreGame() {
-        jpGeneral = new JPanel();
     }
 
     public void initDeckGraphic() {
-        jbContentDeck = new JButton("Deck");
-        jbContentDeck.setPreferredSize(new Dimension(125, 125));
 
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("img/CarteDos.jpg" ));
+        jbContentDeck = new JButton(icon);
 
-        Insets insets = jpGeneral.getInsets();
+        jbContentDeck.setPreferredSize(new Dimension(89, 136));
 
         //placement deck
         Dimension size = jbContentDeck.getPreferredSize();
-        jbContentDeck.setBounds(25 + insets.left, 5 + insets.top,size.width, size.height);
+        jbContentDeck.setBounds(70, 5,size.width, size.height);
 
-        jpGeneral.add(jbContentDeck);
+        add(jbContentDeck);
 
     }
 
+    public void display() {
+        setVisible(true);
+    }
 
+    public void undisplay() {
+        setVisible(false);
+    }
+
+    public void setControlDeck(ActionListener listener) {
+        jbContentDeck.addActionListener(listener);
+    }
+
+    public void afficherCarte(Carte cartePiocher) {
+        System.out.println("img/" + cartePiocher.getNom() + ".png");
+        Icon imageIconeCarte = new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".png"));
+
+
+        JLabel imageCartePiocher = new JLabel();
+        imageCartePiocher.setIcon(imageIconeCarte);
+
+        imageCartePiocher.setBounds(200, 5,89, 136);
+
+        add(imageCartePiocher);
+
+        // ****************************************************************
+        // A besoin de redessiner la vue pour fonctionner -->
+    }
 }
