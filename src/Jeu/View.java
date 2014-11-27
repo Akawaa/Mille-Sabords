@@ -27,6 +27,9 @@ public class View extends JFrame {
     /*JBUTTON*/
     JButton jbContentDeck;
 
+    /* JLabel */
+    JLabel imageCartePiocher;
+
 
     public View() {
         setLayout(null);    // layout null pour le placement libre des objets
@@ -71,6 +74,10 @@ public class View extends JFrame {
 
         add(jbContentDeck);
 
+        imageCartePiocher = new JLabel(new ImageIcon(""));
+        imageCartePiocher.setBounds(200, 5,89, 136);
+        add(imageCartePiocher);
+
     }
 
     public void display() {
@@ -89,15 +96,6 @@ public class View extends JFrame {
         System.out.println("img/" + cartePiocher.getNom() + ".png");
         Icon imageIconeCarte = new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".png"));
 
-
-        JLabel imageCartePiocher = new JLabel();
         imageCartePiocher.setIcon(imageIconeCarte);
-
-        imageCartePiocher.setBounds(200, 5,89, 136);
-
-        add(imageCartePiocher);
-
-        // ****************************************************************
-        // A besoin de redessiner la vue pour fonctionner -->
     }
 }
