@@ -101,4 +101,8 @@ public class View extends JFrame {
     public void desacDeck() {
         jbContentDeck.setEnabled(false);
     }
+
+    public void activDeck() {
+        jbContentDeck.setEnabled(true);
+    }
 }
