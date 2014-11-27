@@ -21,6 +21,7 @@ public class ControlBouton implements ActionListener {
         if(e.getSource() == view.jbContentDeck) {
             Carte cartePiocher = new Carte(model.tirerUneCarte());
             view.afficherCarte(cartePiocher);
+            view.desacDeck();
         }
     }
 }

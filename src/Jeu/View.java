@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
  */
 public class View extends JFrame {
 
-
     /*MENU*/
     JMenuBar barMenu;
     JMenu menu;
@@ -97,5 +96,9 @@ public class View extends JFrame {
         Icon imageIconeCarte = new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".png"));
 
         imageCartePiocher.setIcon(imageIconeCarte);
+    }
+
+    public void desacDeck() {
+        jbContentDeck.setEnabled(false);
     }
 }
