@@ -13,6 +13,9 @@ import java.awt.event.ActionListener;
  *  Information par Aurélien :
  *  Afin de placer les éléments graphique ou l'on veut dans une fenetre, il faut travailler avec setBounds()
  *  Cependant ce n'est pas compatible avec des layout définit, donc plus largement incompatible avec des JPanel
+ *
+ *
+ *  JAWAD
  */
 public class View extends JFrame {
 
@@ -92,7 +95,7 @@ public class View extends JFrame {
     }
 
     public void afficherCarte(Carte cartePiocher) {
-        System.out.println("img/" + cartePiocher.getNom() + ".png");
+        // System.out.println("img/" + cartePiocher.getNom() + ".png");
         Icon imageIconeCarte = new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".png"));
 
         imageCartePiocher.setIcon(imageIconeCarte);
