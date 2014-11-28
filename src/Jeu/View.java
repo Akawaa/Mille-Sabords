@@ -2,7 +2,6 @@ package Jeu;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
@@ -35,7 +34,7 @@ public class View extends JFrame {
         initMenu();         // Initialisation du menu du jeu
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
 
-        setSize(1366,720);       // Définition de la taille de la fenêtre de jeu
+        setSize(1300,720);       // Définition de la taille de la fenêtre de jeu
         setResizable(false);    // Taille fixe afin d'éviter les problèmes de positionnement
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
