@@ -1,14 +1,12 @@
 package Jeu;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by ravier on 15/11/14.
+ * test coco
  */
 public class Deck {
     List<Carte> deckList;
