@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Created by ravier on 15/11/14.
- * test coco
+ * test yoyo
  */
 public class Deck {
     List<Carte> deckList;
