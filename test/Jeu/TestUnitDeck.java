@@ -31,7 +31,5 @@ public class TestUnitDeck {
         Carte carte1 = deck.piocheCarte();
         Assert.assertEquals(carte1, carte2); //test que l'on pioche bien la première carte de la liste
         Assert.assertEquals(tailleDeckAvantPioche -1, deck.tailleDeck()); //test que l'on a bien un élément en moins dans la liste après avoir pioché et remove une carte.
-
-
     }
 }

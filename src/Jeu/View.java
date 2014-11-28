@@ -13,9 +13,6 @@ import java.awt.event.ActionListener;
  *  Information par Aurélien :
  *  Afin de placer les éléments graphique ou l'on veut dans une fenetre, il faut travailler avec setBounds()
  *  Cependant ce n'est pas compatible avec des layout définit, donc plus largement incompatible avec des JPanel
- *
- *
- *  JAWAD
  */
 public class View extends JFrame {
 
@@ -38,7 +35,7 @@ public class View extends JFrame {
         initMenu();         // Initialisation du menu du jeu
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
 
-        setSize(800,500);       // Définition de la taille de la fenêtre de jeu
+        setSize(1366,720);       // Définition de la taille de la fenêtre de jeu
         setResizable(false);    // Taille fixe afin d'éviter les problèmes de positionnement
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -95,10 +92,7 @@ public class View extends JFrame {
     }
 
     public void afficherCarte(Carte cartePiocher) {
-        // System.out.println("img/" + cartePiocher.getNom() + ".png");
-        Icon imageIconeCarte = new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".png"));
-
-        imageCartePiocher.setIcon(imageIconeCarte);
+        imageCartePiocher.setIcon(new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".png")));
     }
 
     public void desacDeck() {
