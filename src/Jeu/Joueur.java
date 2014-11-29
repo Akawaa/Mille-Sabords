@@ -48,4 +48,17 @@ public class Joueur {
         return nbrDes;
     }
 
+    
+
+    /* Méthode d'enregistrement des scores à la fin du tour pour chaque joueur */
+    public void saveScore() {
+
+    }
+
+    public int getScore() {
+        return 3;
+    }
+
+    /* FIN Méthode d'enregistrement */
+
 }
