@@ -1,8 +1,6 @@
 package Jeu;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -56,8 +54,15 @@ public class Joueur {
     
 
     /* Méthode d'enregistrement des scores à la fin du tour pour chaque joueur */
-    public void saveScore() {
 
+    //METHODE UTILISEE POUR LE TEST
+    public void saveScoreTest(PrintStream ps) {
+        ps.append("666");
+    }
+
+    public void saveScore(int newScore) throws IOException{ //Méthode d'enregistrement de score dans un fichier nommé comme le nom du joueur
+        PrintStream ps = new PrintStream("src/Jeu/scores" + System.getProperty("file.separator")+ getNom()+".txt");
+        ps.append(newScore+"");
     }
 
     public int getScore() throws IOException {
