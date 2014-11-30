@@ -1,5 +1,8 @@
 package Jeu;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -12,14 +15,14 @@ public class Joueur {
     * -nbrDes ==> nombre de dès du joueur
     * -*/
 
-    String nom;
+    protected String nom;
     ArrayList<String> facesTirees;
     boolean premierLance;
     int nbrDes;
 
     //Constructeur de joueur
     public Joueur(String nom){
-        nom = this.nom;
+        this.nom = nom;
         facesTirees = new ArrayList<String>();
         premierLance = true;
         nbrDes = 8;
@@ -48,6 +51,8 @@ public class Joueur {
         return nbrDes;
     }
 
+    public String getNom() { return nom;}
+
     
 
     /* Méthode d'enregistrement des scores à la fin du tour pour chaque joueur */
@@ -55,10 +60,21 @@ public class Joueur {
 
     }
 
-    public int getScore() {
-        return 3;
+    public int getScore() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("src/Jeu/scores" + System.getProperty("file.separator") +getNom()+".txt"));
+        String line;
+        line=br.readLine();
+        return Integer.parseInt(line);
     }
 
+
+    ////METHODE UTILISEE POUR LE TEST
+    public int getScoreTest(BufferedReader br) throws IOException{ // Même méthode que la précédente mais pour le TEST
+        String line;
+        int retour = 0;
+        line=br.readLine();
+        return Integer.parseInt(line);
+    }
     /* FIN Méthode d'enregistrement */
 
 }

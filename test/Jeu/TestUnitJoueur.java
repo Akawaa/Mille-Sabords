@@ -3,7 +3,10 @@ package Jeu;
 import com.sun.xml.internal.ws.policy.AssertionSet;
 import junit.framework.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +22,18 @@ public class TestUnitJoueur {
         ArrayList<String> faces;
         faces = joueur.lancerLesDes(joueur.getNbrDes());
         Assert.assertEquals(faces.size(),8);
+    }
+
+    //Ce test test que la méthode de lectude d'un fichier fonctionne bien, que le type de retour est bien un String
+    // "parsé" en entier
+    @Test
+    public void testGetScoreDansFichier() throws IOException{
+        Joueur joueur = new Joueur("Tata");
+        int retour;
+        BufferedReader bufferedReader = Mockito.mock(BufferedReader.class);
+        Mockito.when(bufferedReader.readLine()).thenReturn("8");
+        retour = joueur.getScoreTest(bufferedReader);
+        Assert.assertEquals(retour, 8);
     }
 }
 

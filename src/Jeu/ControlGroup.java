@@ -1,5 +1,7 @@
 package Jeu;
 
+import java.io.IOException;
+
 /**
  * Created by aurelien on 26/11/14..
  */
@@ -9,7 +11,7 @@ public class ControlGroup {
     private ControlMenu controlMenu;
     private ControlBouton controlBouton;
 
-    public ControlGroup(Model model) {
+    public ControlGroup(Model model) throws IOException{
 
         this.model = model;
 

@@ -3,6 +3,7 @@ package Jeu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Created by Berenice on 14/11/14.
@@ -24,6 +25,7 @@ public class View extends JFrame {
 
     /*JBUTTON*/
     protected JButton jbContentDeck;
+    protected JButton jbPasserTour;
 
     /* JLabel */
     protected JLabel imageCartePiocher;
@@ -35,11 +37,12 @@ public class View extends JFrame {
     Joueur joueur;
 
 
-    public View() {
+    public View() throws IOException{
         setLayout(null);    // layout null pour le placement libre des objets
         initMenu();         // Initialisation du menu du jeu
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
         initScoreJoueur();  // Initialisation du score du joueur en cours
+        initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
 
         setSize(1300,720);       // Définition de la taille de la fenêtre de jeu
         setResizable(false);    // Taille fixe afin d'éviter les problèmes de positionnement
@@ -66,17 +69,17 @@ public class View extends JFrame {
         setJMenuBar(barMenu);
     }
 
-    public void initScoreJoueur() {
+    public void initScoreJoueur() throws IOException{ //initalisation des labels score et nomdujoueur
         /*Initialisation*/
         joueur = new Joueur("joueurTest"); //Logiquement joueur doit être initialisé dans partie déjà mais là je l'initialise ici pour faire un test
-        nomJoueurEnCours = new JLabel("Score total du joueur ... : "); //nom du joueur
+        nomJoueurEnCours = new JLabel("Score de "+joueur.getNom()+" :"); //nom du joueur
         scoreJoueurEnCours = new JLabel(joueur.getScore()+"");
 
         /* Placement dans la fenêtre*/
         nomJoueurEnCours.setBounds(1050, 5, 200, 15);
         add(nomJoueurEnCours);
 
-        scoreJoueurEnCours.setBounds(1250, 5, 50, 15);
+        scoreJoueurEnCours.setBounds(1220, 5, 50, 15);
         add(scoreJoueurEnCours);
 
     }
@@ -97,6 +100,17 @@ public class View extends JFrame {
         imageCartePiocher = new JLabel(new ImageIcon(""));
         imageCartePiocher.setBounds(200, 5,89, 136);
         add(imageCartePiocher);
+
+    }
+
+    public void initBoutonPasserTour() {
+        jbPasserTour = new JButton("Passer son tour");
+        jbPasserTour.setPreferredSize(new Dimension(150, 75));
+
+        Dimension sizePasserTour = jbPasserTour.getPreferredSize();
+        jbPasserTour.setBounds(1000, 600,sizePasserTour.width, sizePasserTour.height);
+
+        add(jbPasserTour);
 
     }
 

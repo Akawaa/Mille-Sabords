@@ -1,5 +1,7 @@
 package Jeu;
 
+import java.io.IOException;
+
 /**
  * Created by Berenice on 14/11/14.
  */
@@ -9,7 +11,11 @@ public class Appli {
 
             public void run() {
                 Model model = new Model();
-                ControlGroup controler = new ControlGroup(model);
+                try {
+                    ControlGroup controler = new ControlGroup(model);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
