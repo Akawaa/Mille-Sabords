@@ -14,9 +14,9 @@ public class Joueur {
     * -*/
 
     protected String nom;
-    ArrayList<String> facesTirees;
-    boolean premierLance;
-    int nbrDes;
+    private ArrayList<String> facesTirees;
+    private boolean premierLance;
+    private int nbrDes;
 
     //Constructeur de joueur
     public Joueur(String nom){
@@ -59,7 +59,7 @@ public class Joueur {
     }
 
     public String getNom() { return nom;}
-
+    //---------------------Fin GETTERS and SETTERS-----------
     
 
     /* Méthode d'enregistrement des scores à la fin du tour pour chaque joueur */
