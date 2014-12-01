@@ -32,21 +32,26 @@ public class View extends JFrame {
     protected JLabel nomJoueurEnCours;
     protected JLabel scoreJoueurEnCours;
 
+    /* JPANEL */
+    protected ImagePanel general;
 
     /* Appel de classes */
     Joueur joueur;
 
 
-    public View() throws IOException{
-        setLayout(null);    // layout null pour le placement libre des objets
+    public View() throws IOException {
+        setSize(1300,720);       // Définition de la taille de la fenêtre de jeu
+        setResizable(false);    // Taille fixe afin d'éviter les problèmes de positionnement
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        general = new ImagePanel(new ImageIcon(this.getClass().getResource("img/image_jeu.jpg" )).getImage());
+        general.setLayout(null);    // layout null pour le placement libre des objets
         initMenu();         // Initialisation du menu du jeu
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
         initScoreJoueur();  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
 
-        setSize(1300,720);       // Définition de la taille de la fenêtre de jeu
-        setResizable(false);    // Taille fixe afin d'éviter les problèmes de positionnement
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.getContentPane().add(general);
     }
 
     private void initMenu() {
@@ -69,7 +74,7 @@ public class View extends JFrame {
         setJMenuBar(barMenu);
     }
 
-    public void initScoreJoueur() throws IOException{ //initalisation des labels score et nomdujoueur
+    public void initScoreJoueur() throws IOException { //initalisation des labels score et nomdujoueur
         /*Initialisation*/
         joueur = new Joueur("joueurTest"); //Logiquement joueur doit être initialisé dans partie déjà mais là je l'initialise ici pour faire un test
         nomJoueurEnCours = new JLabel("Score de "+joueur.getNom()+" :"); //nom du joueur
@@ -77,10 +82,10 @@ public class View extends JFrame {
 
         /* Placement dans la fenêtre*/
         nomJoueurEnCours.setBounds(1050, 5, 200, 15);
-        add(nomJoueurEnCours);
+        general.add(nomJoueurEnCours);
 
         scoreJoueurEnCours.setBounds(1220, 5, 50, 15);
-        add(scoreJoueurEnCours);
+        general.add(scoreJoueurEnCours);
 
     }
 
@@ -95,11 +100,11 @@ public class View extends JFrame {
         Dimension size = jbContentDeck.getPreferredSize();
         jbContentDeck.setBounds(70, 5,size.width, size.height);
 
-        add(jbContentDeck);
+        general.add(jbContentDeck);
 
         imageCartePiocher = new JLabel(new ImageIcon(""));
         imageCartePiocher.setBounds(200, 5,89, 136);
-        add(imageCartePiocher);
+        general.add(imageCartePiocher);
 
     }
 
@@ -108,10 +113,8 @@ public class View extends JFrame {
         jbPasserTour.setPreferredSize(new Dimension(150, 75));
 
         Dimension sizePasserTour = jbPasserTour.getPreferredSize();
-        jbPasserTour.setBounds(1000, 600,sizePasserTour.width, sizePasserTour.height);
-
-        add(jbPasserTour);
-
+        jbPasserTour.setBounds(850, 600,sizePasserTour.width, sizePasserTour.height);
+        general.add(jbPasserTour);
     }
 
     public void display() {
