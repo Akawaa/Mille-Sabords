@@ -14,14 +14,28 @@ public class ControlBouton implements ActionListener {
         this.model = model;
         this.view = view;
 
-        view.setControlDeck(this);
+        view.setValiderNbJoueurListener(this);
     }
 
-    public void actionPerformed(final ActionEvent e) {
+    public void actionPerformed(final ActionEvent e){
         if(e.getSource() == view.jbContentDeck) {
             Carte cartePiocher = new Carte(model.tirerUneCarte());
             view.afficherCarte(cartePiocher);
             view.desacDeck();
+        }
+        if(e.getSource() == view.jbValiderNbJoueur) {
+            model.setNbJoueur( Integer.parseInt((String) view.getNombreJoueur().getSelectedItem()));
+            view.removeAllElements();
+            view.nommerJoueur(model.getNbJoueur());
+            view.setValiderNomJoueurListener(this);
+        }
+        if(e.getSource() == view.validerNomJoueur) {
+            String[] nomDesJoueurs = new String[view.nomJoueur.length];
+            for(int i=0;i<nomDesJoueurs.length;i++) {
+                nomDesJoueurs[i] = view.nomJoueur[i].getText();
+            }
+            model.creerpartie(nomDesJoueurs, view);
+            view.setControlDeck(this);
         }
     }
 }

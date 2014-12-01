@@ -26,18 +26,25 @@ public class View extends JFrame {
     /*JBUTTON*/
     protected JButton jbContentDeck;
     protected JButton jbPasserTour;
+    protected JButton jbValiderNbJoueur;
+    protected JButton validerNomJoueur;
 
     /* JLabel */
     protected JLabel imageCartePiocher;
     protected JLabel nomJoueurEnCours;
     protected JLabel scoreJoueurEnCours;
+    protected JLabel bullePirate;
     protected JLabel regleJeu;
+    protected JLabel selectionJoueur;
 
     /* JComboBox */
     protected JComboBox jcbNombreJoueur;
 
     /* JPANEL */
     protected ImagePanel general;
+
+    /* JTextField */
+    JTextField[] nomJoueur;
 
     /* Appel de classes */
     Joueur joueur;
@@ -48,29 +55,32 @@ public class View extends JFrame {
         setResizable(false);    // Taille fixe afin d'éviter les problèmes de positionnement
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // ***************** Création du JPanel global **************
+
         general = new ImagePanel(new ImageIcon(this.getClass().getResource("img/image_jeu.jpg" )).getImage());
         general.setLayout(null);    // layout null pour le placement libre des objets
         getContentPane().add(general);
 
-        initPartie();
-        initRegle();
+        initMenu();
+
+        // ***************** Initialisation de la vue en attendant le nombre de joueur
+        nombreJoueur();
     }
 
-    private void initPartie() throws IOException {
+    public void initPartie() throws IOException {
         initMenu();         // Initialisation du menu du jeu
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
         initScoreJoueur();  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
     }
 
-    private void initRegle() {
+    public void afficherRegle() {
         regleJeu = new JLabel(new ImageIcon(this.getClass().getResource("img/regles.png" )));
-        regleJeu.setBounds(50,370,218, 300);
+        regleJeu.setBounds(50, 370, 218, 300);
         general.add(regleJeu);
-        this.getContentPane().add(general);
     }
 
-    private void initMenu() {
+    public void initMenu() {
 
         barMenu = new JMenuBar();
 
@@ -162,4 +172,64 @@ public class View extends JFrame {
         exit.addActionListener(controlMenu);
     }
     //---------------------------FIN Ajout des ActionListener sur le menu------------------
+
+    public void bullePirate(String nom_image) {
+        bullePirate = new JLabel(new ImageIcon(this.getClass().getResource("img/"+nom_image)));
+        bullePirate.setBounds(980,360,200, 147);
+        general.add(bullePirate);
+    }
+
+    public void removeAllElements() {
+        general.removeAll();
+        general.revalidate();
+        repaint();
+    }
+
+    /* ********************* Partie nombre des joueurs *********************** */
+
+    public void nombreJoueur() {
+        selectionJoueur = new JLabel("Veuillez selectionner un nombre de joueurs :");
+        selectionJoueur.setBounds(400, 250, 400, 30);
+        general.add(selectionJoueur);
+
+        String[] choix = { "2", "3", "4", "5"};
+        jcbNombreJoueur = new JComboBox(choix);
+
+        jcbNombreJoueur.setBounds(500, 300, 100, 30);
+        general.add(jcbNombreJoueur);
+
+        jbValiderNbJoueur = new JButton("Valider");
+        jbValiderNbJoueur.setBounds(500, 350, 100, 40);
+        general.add(jbValiderNbJoueur);
+    }
+
+    public void setValiderNbJoueurListener(ActionListener listener) {
+        jbValiderNbJoueur.addActionListener(listener);
+    }
+
+    public JComboBox getNombreJoueur() { return jcbNombreJoueur; }
+
+    /* ********************* Partie nom des joueurs *********************** */
+
+    public void nommerJoueur(int nbJoueur) {
+        nomJoueur = new JTextField[nbJoueur];
+        int i;
+        for(i=0;i<nbJoueur;i++) {
+            JLabel joueurARemplir = new JLabel("Joueur " + i + " : ");
+            joueurARemplir.setBounds(400,50+i*100,200, 30);
+            general.add(joueurARemplir);
+
+            nomJoueur[i] = new JTextField();
+            nomJoueur[i].setBounds(400,100+i*100,200, 30);
+            general.add(nomJoueur[i]);
+        }
+
+        validerNomJoueur = new JButton("Valider");
+        validerNomJoueur.setBounds(400,150+i*100,200, 30);
+        general.add(validerNomJoueur);
+    }
+
+    public void setValiderNomJoueurListener(ActionListener listener) {
+        validerNomJoueur.addActionListener(listener);
+    }
 }

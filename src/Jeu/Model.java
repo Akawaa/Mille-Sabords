@@ -7,6 +7,8 @@ import java.io.File;
  */
 public class Model {
     Deck deckJeu;
+    int nombreJoueur;
+    Partie partie;
 
     public Model() {
         deckJeu = new Deck();
@@ -16,6 +18,12 @@ public class Model {
     public Carte tirerUneCarte() {
         return deckJeu.piocheCarte();
     }
+
+    public void creerpartie(String[] nomDesJoueurs, View vue) {
+        this.partie = new Partie(nombreJoueur, nomDesJoueurs, vue);
+    }
+    public void setNbJoueur(int nb) { nombreJoueur = nb; }
+    public int getNbJoueur() { return nombreJoueur; }
 
     public void supprimerCarteRepertoireScore() {
         File scoresRep=new File("src/Jeu/scores"); //
