@@ -1,6 +1,5 @@
 package Jeu;
 
-import com.sun.xml.internal.ws.policy.AssertionSet;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -19,8 +18,28 @@ public class TestUnitJoueur {
         Joueur joueur = new Joueur("Titi");
         Assert.assertTrue(joueur.isPremierLance());
         ArrayList<String> faces;
-        faces = joueur.lancerLesDes(joueur.getNbrDes());
+        faces = joueur.lancerLesDes();
         Assert.assertEquals(faces.size(),8);
+    }
+
+    //Ce test permet de vérfier que la décrémentation du nombre de dès d'un joueur s'effectue correctement
+    //En effet si le joueur à "MORT" parmis la liste de faces qu'il génère son nombre de dès devra diminuer en conséquence
+    //Ici 3 "MORT" dans l'ArrayList<String> donc le nombre de dès du joueur après vérif doit être de 5.
+    @Test
+    public void testTeteDeMortDe() throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
+        Joueur joueur = new Joueur("Titi");
+        ArrayList<String> faces = new ArrayList<String>();
+        faces.add("MORT");
+        faces.add("MORT");
+        faces.add("MORT");
+        faces.add("DIAMANT");
+        faces.add("PERROQUET");
+        faces.add("SINGE");
+        faces.add("PIECE");
+        faces.add("PIECE");
+        Assert.assertEquals(joueur.getNbrDes(), 8);
+        joueur.teteDeMortDe(faces);
+        Assert.assertEquals(joueur.getNbrDes(), 5);
     }
 
     //Ce test test que la méthode de lecture d'un fichier fonctionne bien, que le type de retour est bien un String

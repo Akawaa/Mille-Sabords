@@ -28,13 +28,22 @@ public class Joueur {
 
     //Méthode qui créée un dé, lance le dé en fonction du nombre de nom
     //et retourne la ArrayList avec le nom des faces tirées
-    public ArrayList<String> lancerLesDes(int nbrDes) throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
+    public ArrayList<String> lancerLesDes() throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
         De de = new De();
         if(isPremierLance()){
             return de.creerListFaces(8);
         }
         return de.creerListFaces(nbrDes);
     }
+
+    public void teteDeMortDe(ArrayList<String> listFaces) {
+        for(int i=0;i<listFaces.size();i++){
+            if(listFaces.get(i)=="MORT"){
+                nbrDes--;
+            }
+        }
+    }
+
 
     //-----------------GETTERS and SETTERS-----------------
     public boolean isPremierLance() {
