@@ -9,6 +9,11 @@ import java.io.IOException;
  * Created by Berenice on 14/11/14.
  */
 
+/**
+ *  Information par Aurélien :
+ *  Afin de placer les éléments graphique ou l'on veut dans une fenetre, il faut travailler avec setBounds()
+ *  Cependant ce n'est pas compatible avec des layout définit, donc plus largement incompatible avec des JPanel
+ */
 public class View extends JFrame {
 
     /*MENU*/
@@ -26,14 +31,9 @@ public class View extends JFrame {
     protected JLabel imageCartePiocher;
     protected JLabel nomJoueurEnCours;
     protected JLabel scoreJoueurEnCours;
-    protected JLabel bullePirate;
-    protected JLabel regleJeu;
 
     /* JPANEL */
     protected ImagePanel general;
-
-    /* JComboBox */
-    protected JComboBox jcbNombreJoueur;
 
     /* Appel de classes */
     Joueur joueur;
@@ -45,29 +45,13 @@ public class View extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         general = new ImagePanel(new ImageIcon(this.getClass().getResource("img/image_jeu.jpg" )).getImage());
-        general.setLayout(null);
-        this.getContentPane().add(general);
-
-        initAccueil();
-        initPartie();
-    }
-
-    public void initAccueil() {
-
-    }
-
-    public void initPartie() throws IOException {
+        general.setLayout(null);    // layout null pour le placement libre des objets
         initMenu();         // Initialisation du menu du jeu
-        initRegle();
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
         initScoreJoueur();  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
-    }
 
-    private void initRegle() {
-        regleJeu = new JLabel(new ImageIcon(this.getClass().getResource("img/regles.png" )));
-        regleJeu.setBounds(50,370,218, 300);
-        general.add(regleJeu);
+        this.getContentPane().add(general);
     }
 
     private void initMenu() {
@@ -109,12 +93,17 @@ public class View extends JFrame {
 
         ImageIcon icon = new ImageIcon(this.getClass().getResource("img/CarteDos.jpg" ));
         jbContentDeck = new JButton(icon);
-        jbContentDeck.setBounds(70, 20,126,200);
+
+        jbContentDeck.setPreferredSize(new Dimension(89, 136));
+
+        //placement deck
+        Dimension size = jbContentDeck.getPreferredSize();
+        jbContentDeck.setBounds(70, 5,size.width, size.height);
 
         general.add(jbContentDeck);
 
         imageCartePiocher = new JLabel(new ImageIcon(""));
-        imageCartePiocher.setBounds(210, 20,126, 200);
+        imageCartePiocher.setBounds(200, 5,89, 136);
         general.add(imageCartePiocher);
 
     }
@@ -141,7 +130,7 @@ public class View extends JFrame {
     }
 
     public void afficherCarte(Carte cartePiocher) {
-        imageCartePiocher.setIcon(new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".jpg")));
+        imageCartePiocher.setIcon(new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".png")));
     }
 
     public void desacDeck() {

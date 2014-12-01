@@ -3,12 +3,8 @@ package Jeu;
 /**
  * Created by aurelien on 01/12/14.
  */
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 class ImagePanel extends JPanel {
 
