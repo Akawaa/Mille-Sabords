@@ -19,15 +19,21 @@ public class Deck {
 
     public void initDeck() {
         //initialisation du deck avec 24 carte, 3 de chaque (en attendant de savoir exactement combien de carte il y a dans le jeu)
-        for (int i = 0 ; i<3; i++){
-            deckList.add(new CarteAnimaux("CarteAnimaux"));
-            deckList.add(new CarteBateauPirate("CarteBateauPirate"));
-            deckList.add(new CarteDiamant("CarteDiamant"));
-            deckList.add(new CarteGardienne("CarteGardienne"));
-            deckList.add(new CartePieceOr("CartePieceOr"));
-            deckList.add(new CartePirate("CartePirate"));
+        for (int i = 0 ; i<5; i++){
             deckList.add(new CarteTeteMort("CarteTeteMort"));
-            deckList.add(new CarteIleTresor("CarteIleTresor"));
+        }
+        for (int y = 0 ; y<3; y++){
+            deckList.add(new CarteTeteMort("CarteAnimaux"));
+        }
+        for (int ii = 0 ; ii<6; ii++){
+            deckList.add(new CarteTeteMort("CarteBateauPirate"));
+        }
+        for (int yy = 0; yy<4; yy++){
+            deckList.add(new CarteTeteMort("CarteIleTresor"));
+            deckList.add(new CarteTeteMort("CarteGardienne"));
+            deckList.add(new CarteTeteMort("CarteDiamant"));
+            deckList.add(new CarteTeteMort("CartePirate"));
+            deckList.add(new CarteTeteMort("CartePieceOr"));
         }
     }
 

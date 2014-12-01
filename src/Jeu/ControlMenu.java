@@ -19,13 +19,7 @@ public class ControlMenu implements ActionListener {
     //Action sur le bouton quitter
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view.exit) {
-            File scoresRep=new File("src/Jeu/scores"); //
-            File[] f = scoresRep.listFiles();
-            for (int i = 0; i<f.length;i++){
-                if (f[i].isFile()){
-                    f[i].delete();
-                }
-            }
+            model.supprimerCarteRepertoireScore();
             System.exit(0);
         }
     }
