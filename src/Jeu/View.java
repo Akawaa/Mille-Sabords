@@ -137,4 +137,10 @@ public class View extends JFrame {
     public void activDeck() {
         jbContentDeck.setEnabled(true);
     }
+
+    //---------------------------Ajout des ActionListener sur le menu------------------
+    public void setListenerMenu(ControlMenu controlMenu) {
+        exit.addActionListener(controlMenu);
+    }
+    //---------------------------FIN Ajout des ActionListener sur le menu------------------
 }

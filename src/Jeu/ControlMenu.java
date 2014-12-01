@@ -15,7 +15,7 @@ public class ControlMenu implements ActionListener {
         this.view = view;
         view.setListenerMenu(this);
     }
-
+    //Action sur le bouton quitter
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view.exit) {
             System.exit(0);
