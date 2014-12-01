@@ -140,4 +140,8 @@ public class View extends JFrame {
     public void activDeck() {
         jbContentDeck.setEnabled(true);
     }
+
+    public void setListenerMenu(ControlMenu controlMenu) {
+        exit.addActionListener(controlMenu);
+    }
 }
