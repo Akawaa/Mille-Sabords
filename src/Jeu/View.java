@@ -31,6 +31,10 @@ public class View extends JFrame {
     protected JLabel imageCartePiocher;
     protected JLabel nomJoueurEnCours;
     protected JLabel scoreJoueurEnCours;
+    protected JLabel regleJeu;
+
+    /* JComboBox */
+    protected JComboBox jcbNombreJoueur;
 
     /* JPANEL */
     protected ImagePanel general;
@@ -46,11 +50,23 @@ public class View extends JFrame {
 
         general = new ImagePanel(new ImageIcon(this.getClass().getResource("img/image_jeu.jpg" )).getImage());
         general.setLayout(null);    // layout null pour le placement libre des objets
+        getContentPane().add(general);
+
+        initPartie();
+        initRegle();
+    }
+
+    private void initPartie() throws IOException {
         initMenu();         // Initialisation du menu du jeu
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
         initScoreJoueur();  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
+    }
 
+    private void initRegle() {
+        regleJeu = new JLabel(new ImageIcon(this.getClass().getResource("img/regles.png" )));
+        regleJeu.setBounds(50,370,218, 300);
+        general.add(regleJeu);
         this.getContentPane().add(general);
     }
 
@@ -94,7 +110,7 @@ public class View extends JFrame {
         ImageIcon icon = new ImageIcon(this.getClass().getResource("img/CarteDos.jpg" ));
         jbContentDeck = new JButton(icon);
 
-        jbContentDeck.setPreferredSize(new Dimension(89, 136));
+        jbContentDeck.setPreferredSize(new Dimension(126, 200));
 
         //placement deck
         Dimension size = jbContentDeck.getPreferredSize();
@@ -103,7 +119,7 @@ public class View extends JFrame {
         general.add(jbContentDeck);
 
         imageCartePiocher = new JLabel(new ImageIcon(""));
-        imageCartePiocher.setBounds(200, 5,89, 136);
+        imageCartePiocher.setBounds(200, 5,126, 200);
         general.add(imageCartePiocher);
 
     }
@@ -113,7 +129,7 @@ public class View extends JFrame {
         jbPasserTour.setPreferredSize(new Dimension(150, 75));
 
         Dimension sizePasserTour = jbPasserTour.getPreferredSize();
-        jbPasserTour.setBounds(850, 600,sizePasserTour.width, sizePasserTour.height);
+        jbPasserTour.setBounds(850, 600, sizePasserTour.width, sizePasserTour.height);
         general.add(jbPasserTour);
     }
 
@@ -130,7 +146,7 @@ public class View extends JFrame {
     }
 
     public void afficherCarte(Carte cartePiocher) {
-        imageCartePiocher.setIcon(new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".png")));
+        imageCartePiocher.setIcon(new ImageIcon(this.getClass().getResource("img/" + cartePiocher.getNom() + ".jpg")));
     }
 
     public void desacDeck() {
@@ -140,4 +156,10 @@ public class View extends JFrame {
     public void activDeck() {
         jbContentDeck.setEnabled(true);
     }
+
+    //---------------------------Ajout des ActionListener sur le menu------------------
+    public void setListenerMenu(ControlMenu controlMenu) {
+        exit.addActionListener(controlMenu);
+    }
+    //---------------------------FIN Ajout des ActionListener sur le menu------------------
 }
