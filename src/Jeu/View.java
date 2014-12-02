@@ -65,6 +65,7 @@ public class View extends JFrame {
 
         // ***************** Initialisation de la vue en attendant le nombre de joueur
         nombreJoueur();
+        bullePirate("bulleNombreJoueur.png");
     }
 
     public void initPartie() throws IOException {
@@ -72,6 +73,7 @@ public class View extends JFrame {
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
         initScoreJoueur();  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
+        //bullePirate("bulleNombreJoueur.png");
     }
 
     public void afficherRegle() {
@@ -175,7 +177,7 @@ public class View extends JFrame {
 
     public void bullePirate(String nom_image) {
         bullePirate = new JLabel(new ImageIcon(this.getClass().getResource("img/"+nom_image)));
-        bullePirate.setBounds(980,360,200, 147);
+        bullePirate.setBounds(930,310,250, 176);
         general.add(bullePirate);
     }
 
@@ -227,6 +229,8 @@ public class View extends JFrame {
         validerNomJoueur = new JButton("Valider");
         validerNomJoueur.setBounds(400,150+i*100,200, 30);
         general.add(validerNomJoueur);
+
+        bullePirate("bulleNomJoueur.png");
     }
 
     public void setValiderNomJoueurListener(ActionListener listener) {
