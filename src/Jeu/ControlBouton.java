@@ -34,7 +34,8 @@ public class ControlBouton implements ActionListener {
             for(int i=0;i<nomDesJoueurs.length;i++) {
                 nomDesJoueurs[i] = view.nomJoueur[i].getText();
             }
-            model.creerpartie(nomDesJoueurs, view);
+            Partie game = new Partie(model.getNbJoueur(), nomDesJoueurs, view);
+            model.setPartie(game);
             view.setControlDeck(this);
         }
     }

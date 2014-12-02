@@ -19,8 +19,8 @@ public class Model {
         return deckJeu.piocheCarte();
     }
 
-    public void creerpartie(String[] nomDesJoueurs, View vue) {
-        this.partie = new Partie(nombreJoueur, nomDesJoueurs, vue);
+    public void setPartie(Partie game) {
+        partie = game;
     }
     public void setNbJoueur(int nb) { nombreJoueur = nb; }
     public int getNbJoueur() { return nombreJoueur; }
