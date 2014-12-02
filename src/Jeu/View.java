@@ -172,6 +172,7 @@ public class View extends JFrame {
     //---------------------------Ajout des ActionListener sur le menu------------------
     public void setListenerMenu(ControlMenu controlMenu) {
         exit.addActionListener(controlMenu);
+        start.addActionListener(controlMenu);
     }
     //---------------------------FIN Ajout des ActionListener sur le menu------------------
 
