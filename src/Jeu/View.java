@@ -241,9 +241,9 @@ public class View extends JFrame {
     }
 
 
-    public JTextArea getDocumentation() {
-        JTextArea doc;
-        doc = new JTextArea(readFile("./src/Jeu/documentation/documentation.txt"));
+    public String getDocumentation() {
+        String doc;
+        doc = new String(readFile("./src/Jeu/documentation/documentation.txt"));
         return  doc;
     }
 
@@ -272,9 +272,9 @@ public class View extends JFrame {
 //-----------Vue de la documentation-------------------------
     public void Documentationview(){
         JOptionPane d = new JOptionPane();
-
         d.showMessageDialog(null,
-                getDocumentation());
+                        getDocumentation() + "\n"
+                , "Milles sabords", JOptionPane.PLAIN_MESSAGE, new ImageIcon("./src/Jeu/documentation/millesabords.png"));
     }
 //---------Fin vue de la documentation---------------
 
