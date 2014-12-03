@@ -35,5 +35,10 @@ public class ControlMenu implements ActionListener {
                 e1.printStackTrace();
             }
         }
+
+        //Action sur le bouton help
+        if (event.getSource() == view.help){
+            view.Documentationview();
+        }
     }
 }
