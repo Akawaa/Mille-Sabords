@@ -69,7 +69,6 @@ public class View extends JFrame {
     }
 
     public void initPartie() throws IOException {
-        initMenu();         // Initialisation du menu du jeu
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
         initScoreJoueur();  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"

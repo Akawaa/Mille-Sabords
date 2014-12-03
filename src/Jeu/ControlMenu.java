@@ -17,12 +17,12 @@ public class ControlMenu implements ActionListener {
         view.setListenerMenu(this);
     }
     //Action sur le bouton quitter
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == view.exit) {
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == view.exit) {
             model.supprimerCarteRepertoireScore();
             System.exit(0);
         }
-        if (e.getSource() == view.start) {
+        if (event.getSource() == view.start) {
             /*
             * créer un nouveau modele
             * faire vue.dispose()
