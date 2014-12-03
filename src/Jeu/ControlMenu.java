@@ -2,7 +2,6 @@ package Jeu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 /**
  * Created by Berenice on 14/11/14.
@@ -21,6 +20,11 @@ public class ControlMenu implements ActionListener {
         if (e.getSource() == view.exit) {
             model.supprimerCarteRepertoireScore();
             System.exit(0);
+        }
+
+        //Action sur le bouton help
+        if (e.getSource() == view.help){
+            view.DocumentationView();
         }
     }
 }
