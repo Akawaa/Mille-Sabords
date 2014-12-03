@@ -2,6 +2,7 @@ package Jeu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Created by Berenice on 14/11/14.
@@ -17,7 +18,7 @@ public class ControlBouton implements ActionListener {
         view.setValiderNbJoueurListener(this);
     }
 
-    public void actionPerformed(final ActionEvent e){
+    public void actionPerformed(final ActionEvent e) {
         if(e.getSource() == view.jbContentDeck) {
             Carte cartePiocher = new Carte(model.tirerUneCarte());
             view.afficherCarte(cartePiocher);
