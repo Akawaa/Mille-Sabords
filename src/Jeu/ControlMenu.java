@@ -21,5 +21,12 @@ public class ControlMenu implements ActionListener {
             model.supprimerCarteRepertoireScore();
             System.exit(0);
         }
+
+
+        //Action sur le bouton help
+        if (e.getSource() == view.help){
+            view.Documentationview();
+        }
+
     }
 }

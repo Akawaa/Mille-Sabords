@@ -3,6 +3,8 @@ package Jeu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -173,6 +175,7 @@ public class View extends JFrame {
     public void setListenerMenu(ControlMenu controlMenu) {
         exit.addActionListener(controlMenu);
         start.addActionListener(controlMenu);
+        help.addActionListener(controlMenu);
     }
     //---------------------------FIN Ajout des ActionListener sur le menu------------------
 
@@ -237,4 +240,43 @@ public class View extends JFrame {
     public void setValiderNomJoueurListener(ActionListener listener) {
         validerNomJoueur.addActionListener(listener);
     }
+
+
+    public JTextArea getDocumentation() {
+        JTextArea doc;
+        doc = new JTextArea(readFile("./src/Jeu/documentation/documentation.txt"));
+        return  doc;
+    }
+
+    public String readFile( String file )
+    {
+
+        String lines = "";
+        String line;
+        try
+        {
+
+            BufferedReader reader = new BufferedReader( new FileReader(file) );
+
+            // lis ligne à ligne
+            while( (line = reader.readLine()) != null )
+                lines += line+"\n";
+        }
+        catch( Exception e )
+        {
+            lines = "Une erreur s'est produite durant la lecture du flux : "+e.getMessage();
+        }
+
+        return lines;
+    }
+
+//-----------Vue de la documentation-------------------------
+    public void Documentationview(){
+        JOptionPane d = new JOptionPane();
+
+        d.showMessageDialog(null,
+                getDocumentation());
+    }
+//---------Fin vue de la documentation---------------
+
 }
