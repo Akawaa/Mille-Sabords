@@ -35,7 +35,7 @@ public class Deck {
             deckList.add(new CarteTeteMort("CarteBateauPirate4"));
         }
         for (int i6 = 0; i6<4; i6++){
-            deckList.add(new CarteTeteMort("CarteTresor"));
+            deckList.add(new CarteTeteMort("CarteIleTresor"));
             deckList.add(new CarteTeteMort("CarteGardienne"));
             deckList.add(new CarteTeteMort("CarteDiamant"));
             deckList.add(new CarteTeteMort("CartePirate"));
