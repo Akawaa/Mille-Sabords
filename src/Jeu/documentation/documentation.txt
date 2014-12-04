@@ -9,3 +9,47 @@ et réaliser la meilleure combinaison de dés possible. Plus cette combinaison c
 plus elle vous rapporte de points. Mais attention, chaque lancer peut tout vous faire perdre. Sans oublier
 les cartes spéciales qui viennent influencer votre tirage.
 Le premier pirate à atteindre 6000 points remporte la partie.
+
+
+        Déroulement de la partie
+
+A son tour, le joueur révèle la carte Pirate du dessus de la pioche, la pose face visible sur la pile et lance les
+dés. Cette carte Pirate va influer sur le résultat des dés du joueur pendant son tour (voir chapitre
+« Les cartes Pirate »). Le premier lancer doit toujours se faire avec les huit dés. Ensuite, le joueur choisit
+le nombre de dés qu’il souhaite relancer. Les diamants et les pièces d’or sont particulièrement
+intéressants car ils rapportent des points supplémentaires. Quand le joueur termine son tour, il défausse sa
+carte Pirate face visible et donne les dés à son voisin de gauche. Le Capitaine note alors les points obtenus
+par le joueur. Si la pioche est épuisée, la défausse est mélangée pour en former une nouvelle.
+
+
+        Lancer les Dés Corsaire
+
+Après son lancer de dés, et selon la carte Pirate qu’il a révélée, le joueur peut choisir d’arrêter son tour,
+et marquer les points correspondant à son tirage de dés, ou de relancer les dés.
+
+Relancer les dés: le joueur met de côté les dés qu’il souhaite conserver en prenant soin de ne pas modifier
+leur face supérieure, puis jette les dés restants. Le joueur peut, s’il le souhaite, relancer des dés
+précédemment mis de côté.Pour effectuer un nouveau lancer, il y a certaines conditions à respecter :
+    • Il n’est pas possible de relancer l’intégralité de ses dés. Le joueur doit toujours réserver
+au moins un dé.
+    • Un nouveau lancer doit se faire avec au moins deux dés, un dé seul ne peut pas être relancé.
+    • Les dés affichant une tête de mort ne peuvent pas être relancés. Ils sont maudits jusqu’à la
+fin du tour du joueur.
+
+Attention :
+dès qu’un joueur obtient une troisième tête de mort, son tour prend fin et il ne reçoit aucun
+point pour ce tour même s’il avait réalisé d’autres combinaisons de dés.
+
+
+    Points obtenus a la fin d'un tour
+
+Pour marquer des points, le joueur doit stopper volontairement son tour avant que n’apparaisse une troisième tête de mort.
+Les points obtenus pour les dés isolés et pour les combinaisons sont additionnés et notés.
+
+Combien rapportent les combinaisons de dés ?
+    •3 dés identiques = 100 points
+    •4 dés identiques = 200 points
+    •5 dés identiques = 500 points
+    •6 dés identiques = 1000 points
+    •7 dés identiques = 2000 points
+    •8 dés identiques = 4000 points

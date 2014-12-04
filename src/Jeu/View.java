@@ -241,9 +241,11 @@ public class View extends JFrame {
     }
 
 
-    public String getDocumentation() {
-        String doc;
-        doc = new String(readFile("./src/Jeu/documentation/documentation.txt"));
+    public TextArea getDocumentation() {
+        TextArea doc;
+
+        doc = new TextArea(readFile("./src/Jeu/documentation/documentation.txt"));
+
         return  doc;
     }
 
@@ -269,13 +271,24 @@ public class View extends JFrame {
         return lines;
     }
 
+
+
 //-----------Vue de la documentation-------------------------
-    public void Documentationview(){
-        JOptionPane d = new JOptionPane();
-        d.showMessageDialog(null,
-                        getDocumentation() + "\n"
-                , "Milles sabords", JOptionPane.PLAIN_MESSAGE, new ImageIcon("./src/Jeu/documentation/millesabords.png"));
-    }
+public void Documentationview(){
+    JFrame fenetre = new JFrame();
+    Container content = fenetre.getContentPane();
+    //Définit un titre pour notre fenêtre
+    fenetre.setTitle("Ma première fenêtre Java");
+    //Définit sa taille : 400 pixels de large et 100 pixels de haut
+    fenetre.setSize(750, 700);
+    //Nous demandons maintenant à notre objet de se positionner au centre
+    fenetre.setLocationRelativeTo(null);
+    //Termine le processus lorsqu'on clique sur la croix rouge
+    //fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //Et enfin, la rendre visible
+    fenetre.setVisible(true);
+    content.add(getDocumentation());
+}
 //---------Fin vue de la documentation---------------
 
 }
