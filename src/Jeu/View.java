@@ -48,9 +48,6 @@ public class View extends JFrame {
     /* JTextField */
     JTextField[] nomJoueur;
 
-    /* Appel de classes */
-    Joueur joueur;
-
 
     public View() throws IOException {
         setSize(1300,720);       // Définition de la taille de la fenêtre de jeu
@@ -70,9 +67,9 @@ public class View extends JFrame {
         bullePirate("bulleNombreJoueur.png");
     }
 
-    public void initPartie() throws IOException {
+    public void initPartie(Joueur joueurenCour) throws IOException {
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
-        initScoreJoueur();  // Initialisation du score du joueur en cours
+        initScoreJoueur(joueurenCour);  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
         //bullePirate("bulleNombreJoueur.png");
     }
@@ -103,9 +100,8 @@ public class View extends JFrame {
         setJMenuBar(barMenu);
     }
 
-    public void initScoreJoueur() throws IOException { //initalisation des labels score et nomdujoueur
+    public void initScoreJoueur(Joueur joueur) throws IOException { //initalisation des labels score et nomdujoueur
         /*Initialisation*/
-        joueur = new Joueur("joueurTest"); //Logiquement joueur doit être initialisé dans partie déjà mais là je l'initialise ici pour faire un test
         nomJoueurEnCours = new JLabel("Score de "+joueur.getNom()+" :"); //nom du joueur
         scoreJoueurEnCours = new JLabel(joueur.getScore()+"");
 
@@ -141,9 +137,13 @@ public class View extends JFrame {
         jbPasserTour = new JButton("Passer son tour");
         jbPasserTour.setPreferredSize(new Dimension(150, 75));
 
+
         Dimension sizePasserTour = jbPasserTour.getPreferredSize();
         jbPasserTour.setBounds(850, 600, sizePasserTour.width, sizePasserTour.height);
         general.add(jbPasserTour);
+    }
+    public void setBoutonPasserTour(ActionListener listener) {
+        jbPasserTour.addActionListener(listener);
     }
 
     public void display() {
