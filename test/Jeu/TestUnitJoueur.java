@@ -2,9 +2,7 @@ package Jeu;
 
 import junit.framework.Assert;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -40,6 +38,39 @@ public class TestUnitJoueur {
         Assert.assertEquals(joueur.getNbrDes(), 8);
         joueur.teteDeMortDe(faces);
         Assert.assertEquals(joueur.getNbrDes(), 5);
+    }
+
+    @Test
+    public void testCompterPointDesIdentiques(){
+        Joueur joueur = new Joueur("Titi");
+        ArrayList<String> listeFaces = new ArrayList<String>();
+        for(int i=0;i<8;i++){
+            listeFaces.add("DIAMANT");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(4000,joueur.getPoints());
+
+        listeFaces.clear();
+        joueur.setPoints(0);
+        for(int i=0;i<4;i++){
+            listeFaces.add("SINGE");
+        }
+        for(int i=0;i<4;i++){
+            listeFaces.add("PIECE");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(400,joueur.getPoints());
+
+        listeFaces.clear();
+        joueur.setPoints(0);
+        for(int i=0;i<8;i++){
+            listeFaces.add("MORT");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(0,joueur.getPoints());
     }
 }
 
