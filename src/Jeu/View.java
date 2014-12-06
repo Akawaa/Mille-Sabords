@@ -67,10 +67,14 @@ public class View extends JFrame {
         bullePirate("bulleNombreJoueur.png");
     }
 
-    public void initPartie(Joueur joueurenCour) throws IOException {
+    public void initJeu(Joueur joueurenCour, ControlBouton cb) throws IOException {
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
         initScoreJoueur(joueurenCour);  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
+        cb.actionBoutonPasserTour();
+        setBoutonDeckGraphic(cb);
+        afficherRegle();
+
         //bullePirate("bulleNombreJoueur.png");
     }
 
@@ -131,6 +135,10 @@ public class View extends JFrame {
         imageCartePiocher.setBounds(200, 5,126, 200);
         general.add(imageCartePiocher);
 
+    }
+
+    public void setBoutonDeckGraphic(ActionListener listener) {
+        jbContentDeck.addActionListener(listener);
     }
 
     public void initBoutonPasserTour() {
@@ -276,6 +284,7 @@ public class View extends JFrame {
         d.showMessageDialog(null,
                 getDocumentation());
     }
+
 //---------Fin vue de la documentation---------------
 
 }

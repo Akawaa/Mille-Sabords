@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * Created by ravier on 15/11/14.
- * test yoyo
  */
 public class Deck {
     List<Carte> deckList;
@@ -18,7 +17,6 @@ public class Deck {
     }
 
     public void initDeck() {
-        //initialisation du deck avec 24 carte, 3 de chaque (en attendant de savoir exactement combien de carte il y a dans le jeu)
         for (int i = 0 ; i<3; i++){
             deckList.add(new CarteTeteMort("CarteTeteMort1"));
         }

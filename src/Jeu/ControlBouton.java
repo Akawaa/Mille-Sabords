@@ -24,7 +24,7 @@ public class ControlBouton implements ActionListener {
             Carte cartePiocher = new Carte(model.tirerUneCarte());
             view.afficherCarte(cartePiocher);
             view.desacDeck();
-            view.initBoutonLancerDe();
+            //view.initBoutonLancerDe();
         }
         if(e.getSource() == view.jbValiderNbJoueur) {
             model.setNbJoueur( Integer.parseInt((String) view.getNombreJoueur().getSelectedItem()));
@@ -38,8 +38,10 @@ public class ControlBouton implements ActionListener {
                 nomDesJoueurs[i] = view.nomJoueur[i].getText();
             }
             try {
-                game = new Partie(model.getNbJoueur(), nomDesJoueurs, view);
+                game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, this);
             } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
                 e1.printStackTrace();
             }
             model.setPartie(game);
@@ -47,8 +49,21 @@ public class ControlBouton implements ActionListener {
         }
 
         if (e.getSource() == view.jbPasserTour){
-            game.setFinPartie(true);
+            System.out.print("clic");
+            view.activDeck();
+            //ControlBouton cb = new ControlBouton(model, view);
+            view.removeAllElements();
+            game.setFinTour(true);
+            game.setIteratorJoueur(game.getIteratorJoueur() + 1); //passe au joueur suivant
+            if (game.getIteratorJoueur() >= game.getNbJoueur()) {
+                game.setIteratorJoueur(0);
+            }
+            game.newTour(game.getIteratorJoueur(), this, game.getNbJoueur()); //lance un nouveau tour
             view.setBoutonPasserTour(this);
         }
+    }
+
+    public void actionBoutonPasserTour() {
+        view.setBoutonPasserTour(this);
     }
 }
