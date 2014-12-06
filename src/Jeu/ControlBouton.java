@@ -24,6 +24,7 @@ public class ControlBouton implements ActionListener {
             Carte cartePiocher = new Carte(model.tirerUneCarte());
             view.afficherCarte(cartePiocher);
             view.desacDeck();
+            view.initBoutonLancerDe();
         }
         if(e.getSource() == view.jbValiderNbJoueur) {
             model.setNbJoueur( Integer.parseInt((String) view.getNombreJoueur().getSelectedItem()));

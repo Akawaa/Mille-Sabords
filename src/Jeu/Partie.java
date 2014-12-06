@@ -37,11 +37,11 @@ public class Partie {
             System.out.println (ex.toString());
         }
 
-        while(!finPartie) {
+        /*while(!finPartie) {
             while (!finTour){
                 Thread.sleep(1);
             }
-        }
+        }*/
     }
 
     /********GETTERS AND SETTERS******/
