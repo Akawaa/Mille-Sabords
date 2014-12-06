@@ -2,9 +2,7 @@ package Jeu;
 
 import junit.framework.Assert;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -42,29 +40,37 @@ public class TestUnitJoueur {
         Assert.assertEquals(joueur.getNbrDes(), 5);
     }
 
-    //Ce test test que la méthode de lecture d'un fichier fonctionne bien, que le type de retour est bien un String
-    // "parsé" en entier
     @Test
-    public void testGetScoreDunFichierScore() throws IOException {
-        Joueur joueur = new Joueur("Tata");
-        int retour;
-        BufferedReader bufferedReader = Mockito.mock(BufferedReader.class);
-        Mockito.when(bufferedReader.readLine()).thenReturn("8");
-        retour = joueur.getScoreTest(bufferedReader);
-        Assert.assertEquals(retour, 8);
-    }
+    public void testCompterPointDesIdentiques(){
+        Joueur joueur = new Joueur("Titi");
+        ArrayList<String> listeFaces = new ArrayList<String>();
+        for(int i=0;i<8;i++){
+            listeFaces.add("DIAMANT");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(4000,joueur.getPoints());
 
-    //Cette méthode de test test l'écriture dans un fichier et appelle la méthode de lecture pour contrôler le contenu du fichier
-    //le fichier "testFile.txt" est crée ici dans le répertoire de test.
-    @Test
-    public void testEcritureFichierScore() throws IOException {
-        Joueur joueur = new Joueur("Toctoc");
-        File file = new File("testFile.txt");
-        PrintStream ps = new PrintStream(file);
-        joueur.saveScoreTest(ps);
+        listeFaces.clear();
+        joueur.setPoints(0);
+        for(int i=0;i<4;i++){
+            listeFaces.add("SINGE");
+        }
+        for(int i=0;i<4;i++){
+            listeFaces.add("PIECE");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(400,joueur.getPoints());
 
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        Assert.assertEquals(joueur.getScoreTest(br), 666);
+        listeFaces.clear();
+        joueur.setPoints(0);
+        for(int i=0;i<8;i++){
+            listeFaces.add("MORT");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(0,joueur.getPoints());
     }
 }
 

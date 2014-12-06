@@ -10,6 +10,7 @@ import java.io.IOException;
 public class ControlBouton implements ActionListener {
     private Model model;
     private View view;
+    protected Partie game = null;
 
     public ControlBouton(Model model, View view) {
         this.model = model;
@@ -35,9 +36,18 @@ public class ControlBouton implements ActionListener {
             for(int i=0;i<nomDesJoueurs.length;i++) {
                 nomDesJoueurs[i] = view.nomJoueur[i].getText();
             }
-            Partie game = new Partie(model.getNbJoueur(), nomDesJoueurs, view);
+            try {
+                game = new Partie(model.getNbJoueur(), nomDesJoueurs, view);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
             model.setPartie(game);
             view.setControlDeck(this);
+        }
+
+        if (e.getSource() == view.jbPasserTour){
+            game.setFinPartie(true);
+            view.setBoutonPasserTour(this);
         }
     }
 }

@@ -1,8 +1,7 @@
 package Jeu;
 
-import javax.swing.*;
-import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by quentin on 28/11/14.
@@ -18,6 +17,8 @@ public class Joueur {
     private ArrayList<String> facesTirees;
     private boolean premierLance;
     private int nbrDes;
+    private int score;
+    private int points;
 
     //Constructeur de joueur
     public Joueur(String nom){
@@ -25,6 +26,8 @@ public class Joueur {
         facesTirees = new ArrayList<String>();
         premierLance = true;
         nbrDes = 8;
+        score = 0; //Initialisation à 0
+        points = 0;
     }
 
     //Méthode qui créée un dé, lance le dé en fonction du nombre de nom
@@ -60,37 +63,49 @@ public class Joueur {
     }
 
     public String getNom() { return nom;}
+
+    public void setScore(int newScore) {
+        this.score = newScore;
+    }
+    public int getScore() { return score;}
     //---------------------Fin GETTERS and SETTERS-----------
-    
 
-    /* Méthode d'enregistrement des scores à la fin du tour pour chaque joueur */
-
-    //METHODE UTILISEE POUR LE TEST
-    public void saveScoreTest(PrintStream ps) {
-        ps.append("666");
+    public void setFacesTirees(ArrayList<String> facesTirees) {
+        this.facesTirees = facesTirees;
     }
 
-    public void saveScore(int newScore) throws IOException{ //Méthode d'enregistrement de score dans un fichier nommé comme le nom du joueur
-        PrintStream ps = new PrintStream("src/Jeu/scores" + System.getProperty("file.separator")+ getNom()+".txt");
-        ps.append(newScore+"");
+    public void compterPointDesIdentiques() {
+        int occurences;
+        ArrayList<String> listeFacesPossibles = new ArrayList<String>();
+        listeFacesPossibles.add("SINGE");
+        listeFacesPossibles.add("SABRE");
+        listeFacesPossibles.add("PERROQUET");
+        listeFacesPossibles.add("PIECE");
+        listeFacesPossibles.add("DIAMANT");
+        //listeFacesPossibles.add("MORT");
+        for(String face:listeFacesPossibles){
+            occurences = Collections.frequency(facesTirees, face);
+            if(occurences == 3)
+                points += 100;
+            if(occurences == 4)
+                points +=200;
+            if(occurences == 5)
+                points +=500;
+            if(occurences == 6)
+                points +=1000;
+            if(occurences == 7)
+                points +=2000;
+            if(occurences == 8)
+                points +=4000;
+        }
+
     }
 
-    public int getScore() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("src/Jeu/scores" + System.getProperty("file.separator") +getNom()+".txt"));
-        String line;
-        line=br.readLine();
-        return Integer.parseInt(line);
+    public int getPoints() {
+        return points;
     }
 
-
-    ////METHODE UTILISEE POUR LE TEST
-    public int getScoreTest(BufferedReader br) throws IOException{ // Même méthode que la précédente mais pour le TEST
-        String line;
-        int retour = 0;
-        line=br.readLine();
-        return Integer.parseInt(line);
+    public void setPoints(int points) {
+        this.points = points;
     }
-    /* FIN Méthode d'enregistrement */
-
-
 }
