@@ -1,7 +1,7 @@
 package Jeu;
 
 import java.io.IOException;
-import java.io.*;
+import java.util.Collections;
 
 /**
  * Created by aurelien on 01/12/14.
@@ -39,6 +39,10 @@ public class Partie {
 
     }
 
+    public Partie(Joueur[] joueurs) {
+        this.joueurs = joueurs;
+    }
+
     public void newTour(int iteratorJoueur, ControlBouton cb, int nbJoueur) {
         try{
             view.initJeu(joueurs[getIteratorJoueur()], cb);
@@ -46,6 +50,15 @@ public class Partie {
         catch(IOException ex){
             System.out.println (ex.toString());
         }
+        try {
+            System.out.println("Lancé des dès");
+            joueurs[getIteratorJoueur()].lancerLesDes();
+        } catch (ListFacesInferieurA1Exception e) {
+            e.printStackTrace();
+        } catch (ListFacesSuperieurA8Exception e) {
+            e.printStackTrace();
+        }
+        joueurs[getIteratorJoueur()].compterPointDesIdentiques();
     }
 
     /********GETTERS AND SETTERS******/
@@ -72,5 +85,19 @@ public class Partie {
         return nbJoueur;
     }
 
+    public Joueur getJoueur(int i) {
+        return joueurs[i];
+    }
 
+
+    public void compterPoint4TeteDeMort(Joueur joueur) {
+        if(joueur.isTeteDeMort()){
+            int occurrencesMort = Collections.frequency(joueur.getFacesTirees(),"MORT");
+            System.out.println(occurrencesMort);
+            if(occurrencesMort >= 4){
+                for(int i=0;i<nbJoueur;i++)
+                    joueurs[i].enleverPoints(occurrencesMort * 100);
+            }
+        }
+    }
 }
