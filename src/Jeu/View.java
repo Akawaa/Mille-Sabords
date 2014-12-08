@@ -48,14 +48,6 @@ public class View extends JFrame {
     /* JTextField */
     JTextField[] nomJoueur;
 
-    /*JBUTTON Dé*/
-    protected int nbdeligne = 4;
-    protected De de;
-    protected JButton[] mesDes;
-
-    /* Appel de classes */
-    Joueur joueur;
-
 
     public View() throws IOException {
         setSize(1300,720);       // Définition de la taille de la fenêtre de jeu
@@ -75,10 +67,14 @@ public class View extends JFrame {
         bullePirate("bulleNombreJoueur.png");
     }
 
-    public void initPartie() throws IOException {
+    public void initJeu(Joueur joueurenCour, ControlBouton cb) throws IOException {
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
-        initScoreJoueur();  // Initialisation du score du joueur en cours
+        initScoreJoueur(joueurenCour);  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
+        cb.actionBoutonPasserTour();
+        setBoutonDeckGraphic(cb);
+        afficherRegle();
+
         //bullePirate("bulleNombreJoueur.png");
     }
 
@@ -108,9 +104,8 @@ public class View extends JFrame {
         setJMenuBar(barMenu);
     }
 
-    public void initScoreJoueur() throws IOException { //initalisation des labels score et nomdujoueur
+    public void initScoreJoueur(Joueur joueur) throws IOException { //initalisation des labels score et nomdujoueur
         /*Initialisation*/
-        joueur = new Joueur("joueurTest"); //Logiquement joueur doit être initialisé dans partie déjà mais là je l'initialise ici pour faire un test
         nomJoueurEnCours = new JLabel("Score de "+joueur.getNom()+" :"); //nom du joueur
         scoreJoueurEnCours = new JLabel(joueur.getScore()+"");
 
@@ -142,13 +137,21 @@ public class View extends JFrame {
 
     }
 
+    public void setBoutonDeckGraphic(ActionListener listener) {
+        jbContentDeck.addActionListener(listener);
+    }
+
     public void initBoutonPasserTour() {
         jbPasserTour = new JButton("Passer son tour");
         jbPasserTour.setPreferredSize(new Dimension(150, 75));
 
+
         Dimension sizePasserTour = jbPasserTour.getPreferredSize();
         jbPasserTour.setBounds(850, 600, sizePasserTour.width, sizePasserTour.height);
         general.add(jbPasserTour);
+    }
+    public void setBoutonPasserTour(ActionListener listener) {
+        jbPasserTour.addActionListener(listener);
     }
 
     public void display() {
@@ -246,11 +249,9 @@ public class View extends JFrame {
     }
 
 
-    public TextArea getDocumentation() {
-        TextArea doc;
-
-        doc = new TextArea(readFile("./src/Jeu/documentation/documentation.txt"));
-
+    public JTextArea getDocumentation() {
+        JTextArea doc;
+        doc = new JTextArea(readFile("./src/Jeu/documentation/documentation.txt"));
         return  doc;
     }
 
@@ -276,25 +277,14 @@ public class View extends JFrame {
         return lines;
     }
 
-
-
 //-----------Vue de la documentation-------------------------
-public void Documentationview(){
-    JFrame fenetre = new JFrame();
-    Container content = fenetre.getContentPane();
-    //Définit un titre pour notre fenêtre
-    fenetre.setTitle("Ma première fenêtre Java");
-    //Définit sa taille : 400 pixels de large et 100 pixels de haut
-    fenetre.setSize(750, 700);
-    //Nous demandons maintenant à notre objet de se positionner au centre
-    fenetre.setLocationRelativeTo(null);
-    //Termine le processus lorsqu'on clique sur la croix rouge
-    //fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    //Et enfin, la rendre visible
-    fenetre.setVisible(true);
+    public void Documentationview(){
+        JOptionPane d = new JOptionPane();
 
-    content.add(getDocumentation());
-}
+        d.showMessageDialog(null,
+                getDocumentation());
+    }
+
 //---------Fin vue de la documentation---------------
 
 }
