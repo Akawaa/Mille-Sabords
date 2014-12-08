@@ -7,6 +7,7 @@ import java.io.File;
  */
 public class Model {
     Deck deckJeu;
+    Carte carte;
     int nombreJoueur;
     Partie partie;
 
@@ -15,8 +16,8 @@ public class Model {
         deckJeu.melangerDeck();
     }
 
-    public Carte tirerUneCarte() {
-        return deckJeu.piocheCarte();
+    public void tirerUneCarte() {
+        carte = deckJeu.piocheCarte();
     }
 
     public void setPartie(Partie game) {
@@ -33,5 +34,13 @@ public class Model {
                 f[i].delete();
             }
         }
+    }
+
+    public Carte getCartePiochee() {
+        return carte;
+    }
+
+    public void setCarte(Carte carte) {
+        this.carte = carte;
     }
 }

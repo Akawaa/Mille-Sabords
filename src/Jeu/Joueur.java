@@ -105,6 +105,10 @@ public class Joueur {
             if(occurences == 8)
                 points +=4000;
         }
+        occurences = Collections.frequency((facesTirees), "MORT");
+        if(occurences == 3){
+            points = 0;
+        }
     }
 
     public void compterPointDiamantPiece() {
@@ -117,5 +121,9 @@ public class Joueur {
 
     public void enleverPoints(int points) {
         this.points -= points;
+    }
+
+    public void ajouterPoints(int points) {
+        this.points += points;
     }
 }

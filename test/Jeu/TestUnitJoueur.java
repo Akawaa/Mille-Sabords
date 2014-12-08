@@ -47,7 +47,7 @@ public class TestUnitJoueur {
         Joueur joueur = new Joueur("Titi");
         ArrayList<String> listeFaces = new ArrayList<String>();
         for(int i=0;i<8;i++){
-            listeFaces.add("DIAMANT");
+            listeFaces.add("PERROQUET");
         }
         joueur.setFacesTirees(listeFaces);
         joueur.compterPointDesIdentiques();
@@ -59,7 +59,7 @@ public class TestUnitJoueur {
             listeFaces.add("SINGE");
         }
         for(int i=0;i<4;i++){
-            listeFaces.add("PIECE");
+            listeFaces.add("SABRE");
         }
         joueur.setFacesTirees(listeFaces);
         joueur.compterPointDesIdentiques();
@@ -93,27 +93,5 @@ public class TestUnitJoueur {
         Assert.assertEquals(400,joueur.getPoints());
     }
 
-   /* @Test
-    public void testCompterPointAucuneTeteMortTour(){
-        Joueur[] joueurs = new Joueur[2];
-        joueurs[0] = new Joueur("Coco");
-        joueurs[1] = new Joueur("Titi");
-        boolean teteDeMort = true;
-        ArrayList<String> listeFaces = new ArrayList<String>();
-        for(int i=0;i<2;i++){
-            listeFaces.add("DIAMANT");
-        }
-        for(int i=0;i<2;i++){
-            listeFaces.add("PIECE");
-        }
-        for(int i=0;i<4;i++){
-            listeFaces.add("SINGE");
-        }
-        joueurs[0].setFacesTirees(listeFaces);
-
-        joueurs[0].compterPointDesIdentiques(joueurs, teteDeMort);
-
-
-    }*/
 }
 

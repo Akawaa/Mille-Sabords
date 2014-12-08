@@ -9,6 +9,7 @@ import java.util.Collections;
 public class Partie {
 
     View view;
+    Model model;
     Joueur[] joueurs;
     boolean finPartie = false;
     boolean finTour = false;
@@ -16,10 +17,11 @@ public class Partie {
     public int getIteratorJoueur;
     private int nbJoueur;
 
-    public Partie(int nbJoueur, String[] nomJoueur, View view, ControlBouton cb) throws InterruptedException, IOException {
+    public Partie(int nbJoueur, String[] nomJoueur, View view, Model model, ControlBouton cb) throws InterruptedException, IOException {
         setNbJoueur(nbJoueur);
         System.out.print("nb joueur : " + getNbJoueur());
         this.view = view;
+        this.model = model;
         // Intérieur de la partie à faire
         // --> Créer les joueurs
         // --> Organiser les tours ...
@@ -99,5 +101,15 @@ public class Partie {
                     joueurs[i].enleverPoints(occurrencesMort * 100);
             }
         }
+    }
+
+    public void compterPointCartePieceDiamant(Joueur joueur) {
+        if(model.getCartePiochee().getNom() == "CarteDiamant")
+            joueur.ajouterPoints(100);
+    }
+
+    public void compterPointCartePirate(Joueur joueur) {
+        if(model.getCartePiochee().getNom() == "CartePirate")
+            joueur.setPoints(joueur.getPoints()*2);
     }
 }
