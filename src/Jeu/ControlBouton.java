@@ -21,8 +21,8 @@ public class ControlBouton implements ActionListener {
 
     public void actionPerformed(final ActionEvent e) {
         if(e.getSource() == view.jbContentDeck) {
-            Carte cartePiocher = new Carte(model.tirerUneCarte());
-            view.afficherCarte(cartePiocher);
+            model.tirerUneCarte();
+            view.afficherCarte(model.getCartePiochee());
             view.desacDeck();
             //view.initBoutonLancerDe();
         }
@@ -38,7 +38,7 @@ public class ControlBouton implements ActionListener {
                 nomDesJoueurs[i] = view.nomJoueur[i].getText();
             }
             try {
-                game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, this);
+                game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, model, this);
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             } catch (IOException e1) {

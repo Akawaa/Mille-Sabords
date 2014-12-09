@@ -16,8 +16,8 @@ public class Joueur {
     protected String nom;
     private ArrayList<String> facesTirees;
     private boolean premierLance;
+    private boolean teteDeMort;
     private int nbrDes;
-    private int score;
     private int points;
 
     //Constructeur de joueur
@@ -25,25 +25,25 @@ public class Joueur {
         this.nom = nom;
         facesTirees = new ArrayList<String>();
         premierLance = true;
+        teteDeMort = false;
         nbrDes = 8;
-        score = 0; //Initialisation à 0
+        //score = 0; //Initialisation à 0
         points = 0;
     }
 
     //Méthode qui créée un dé, lance le dé en fonction du nombre de nom
-    //et retourne la ArrayList avec le nom des faces tirées
-    public ArrayList<String> lancerLesDes() throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
+
+    public void lancerLesDes() throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
         De de = new De();
-        if(isPremierLance()){
-            return de.creerListFaces(8);
-        }
-        return de.creerListFaces(nbrDes);
+        teteDeMort = false;
+        facesTirees = de.creerListFaces(nbrDes);
     }
 
-    public void teteDeMortDe(ArrayList<String> listFaces) {
-        for(int i=0;i<listFaces.size();i++){
-            if(listFaces.get(i)=="MORT"){
+    public void teteDeMortDe() {
+        for(int i=0;i<facesTirees.size();i++){
+            if(facesTirees.get(i)=="MORT"){
                 nbrDes--;
+                teteDeMort = true;
             }
         }
     }
@@ -52,6 +52,10 @@ public class Joueur {
     //-----------------GETTERS and SETTERS-----------------
     public boolean isPremierLance() {
         return premierLance;
+    }
+
+    public boolean isTeteDeMort() {
+        return teteDeMort;
     }
 
     public ArrayList<String> getFacesTirees() {
@@ -64,15 +68,18 @@ public class Joueur {
 
     public String getNom() { return nom;}
 
-    public void setScore(int newScore) {
-        this.score = newScore;
+    public int getPoints() {
+        return points;
     }
-    public int getScore() { return score;}
-    //---------------------Fin GETTERS and SETTERS-----------
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
 
     public void setFacesTirees(ArrayList<String> facesTirees) {
         this.facesTirees = facesTirees;
     }
+    //---------------------Fin GETTERS and SETTERS-----------
 
     public void compterPointDesIdentiques() {
         int occurences;
@@ -98,14 +105,25 @@ public class Joueur {
             if(occurences == 8)
                 points +=4000;
         }
-
+        occurences = Collections.frequency((facesTirees), "MORT");
+        if(occurences == 3){
+            points = 0;
+        }
     }
 
-    public int getPoints() {
-        return points;
+    public void compterPointDiamantPiece() {
+        for(String face:facesTirees){
+           if(face == "DIAMANT" || face == "PIECE"){
+               points += 100;
+           }
+        }
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public void enleverPoints(int points) {
+        this.points -= points;
+    }
+
+    public void ajouterPoints(int points) {
+        this.points += points;
     }
 }

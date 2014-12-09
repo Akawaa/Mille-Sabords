@@ -17,22 +17,23 @@ public class Deck {
     }
 
     public void initDeck() {
-        for (int i = 0 ; i<3; i++){
+        int i;
+        for (i = 0 ; i<3; i++){
             deckList.add(new CarteTeteMort("CarteTeteMort1"));
         }
-        for (int i2 = 0 ; i2<2; i2++){
+        for (i= 0 ; i<2; i++){
             deckList.add(new CarteTeteMort("CarteTeteMort2"));
         }
-        for (int i3 = 0 ; i3<2; i3++){
+        for (i = 0 ; i<2; i++){
             deckList.add(new CarteTeteMort("CarteBateauPirate3"));
         }
-        for (int i4 = 0 ; i4<2; i4++){
+        for (i= 0 ; i<2; i++){
             deckList.add(new CarteTeteMort("CarteBateauPirate3"));
         }
-        for (int i5 = 0 ; i5<2; i5++){
+        for (i = 0 ; i<2; i++){
             deckList.add(new CarteTeteMort("CarteBateauPirate4"));
         }
-        for (int i6 = 0; i6<4; i6++){
+        for (i = 0; i<4; i++){
             deckList.add(new CarteTeteMort("CarteIleTresor"));
             deckList.add(new CarteTeteMort("CarteGardienne"));
             deckList.add(new CarteTeteMort("CarteDiamant"));

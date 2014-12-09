@@ -15,9 +15,8 @@ public class TestUnitJoueur {
     public void testPremierLanceDe() throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
         Joueur joueur = new Joueur("Titi");
         Assert.assertTrue(joueur.isPremierLance());
-        ArrayList<String> faces;
-        faces = joueur.lancerLesDes();
-        Assert.assertEquals(faces.size(),8);
+        joueur.lancerLesDes();
+        Assert.assertEquals(joueur.getFacesTirees().size(),8);
     }
 
     //Ce test permet de vérfier que la décrémentation du nombre de dès d'un joueur s'effectue correctement
@@ -35,9 +34,12 @@ public class TestUnitJoueur {
         faces.add("SINGE");
         faces.add("PIECE");
         faces.add("PIECE");
+        Assert.assertFalse(joueur.isTeteDeMort());
         Assert.assertEquals(joueur.getNbrDes(), 8);
-        joueur.teteDeMortDe(faces);
+        joueur.setFacesTirees(faces);
+        joueur.teteDeMortDe();
         Assert.assertEquals(joueur.getNbrDes(), 5);
+        Assert.assertTrue(joueur.isTeteDeMort());
     }
 
     @Test
@@ -45,7 +47,7 @@ public class TestUnitJoueur {
         Joueur joueur = new Joueur("Titi");
         ArrayList<String> listeFaces = new ArrayList<String>();
         for(int i=0;i<8;i++){
-            listeFaces.add("DIAMANT");
+            listeFaces.add("PERROQUET");
         }
         joueur.setFacesTirees(listeFaces);
         joueur.compterPointDesIdentiques();
@@ -57,7 +59,7 @@ public class TestUnitJoueur {
             listeFaces.add("SINGE");
         }
         for(int i=0;i<4;i++){
-            listeFaces.add("PIECE");
+            listeFaces.add("SABRE");
         }
         joueur.setFacesTirees(listeFaces);
         joueur.compterPointDesIdentiques();
@@ -72,5 +74,24 @@ public class TestUnitJoueur {
         joueur.compterPointDesIdentiques();
         Assert.assertEquals(0,joueur.getPoints());
     }
+
+    @Test
+    public void testCompterPointDiamantPiece(){
+        Joueur joueur = new Joueur("Titi");
+        ArrayList<String> listeFaces = new ArrayList<String>();
+        for(int i=0;i<2;i++){
+            listeFaces.add("DIAMANT");
+        }
+        for(int i=0;i<2;i++){
+            listeFaces.add("PIECE");
+        }
+        for(int i=0;i<4;i++){
+            listeFaces.add("SINGE");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDiamantPiece();
+        Assert.assertEquals(400,joueur.getPoints());
+    }
+
 }
 

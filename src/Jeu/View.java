@@ -107,7 +107,7 @@ public class View extends JFrame {
     public void initScoreJoueur(Joueur joueur) throws IOException { //initalisation des labels score et nomdujoueur
         /*Initialisation*/
         nomJoueurEnCours = new JLabel("Score de "+joueur.getNom()+" :"); //nom du joueur
-        scoreJoueurEnCours = new JLabel(joueur.getScore()+"");
+        scoreJoueurEnCours = new JLabel(joueur.getPoints()+"");
 
         /* Placement dans la fenêtre*/
         nomJoueurEnCours.setBounds(1050, 5, 200, 15);
