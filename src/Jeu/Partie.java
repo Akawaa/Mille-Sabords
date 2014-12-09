@@ -104,12 +104,31 @@ public class Partie {
     }
 
     public void compterPointCartePieceDiamant(Joueur joueur) {
-        if(model.getCartePiochee().getNom() == "CarteDiamant")
+        if(model.getCartePiochee() instanceof CarteDiamant)
             joueur.ajouterPoints(100);
     }
 
     public void compterPointCartePirate(Joueur joueur) {
-        if(model.getCartePiochee().getNom() == "CartePirate")
+        if(model.getCartePiochee() instanceof CartePirate)
             joueur.setPoints(joueur.getPoints()*2);
+    }
+
+    public void compterPointCarteBateauPirate(Joueur joueur) {
+        if(model.getCartePiochee() instanceof CarteBateauPirate) {
+            int nbrSabreCarte = ((CarteBateauPirate)model.getCartePiochee()).getNbrSabre();
+            int occurrencesSabre = Collections.frequency(joueur.getFacesTirees(), "SABRE");
+            if(occurrencesSabre != nbrSabreCarte){
+                if(nbrSabreCarte == 2){
+                    joueur.enleverPoints(300);
+                }
+                if(nbrSabreCarte == 3){
+                    joueur.enleverPoints(500);
+                }
+                if(nbrSabreCarte == 4){
+                    joueur.enleverPoints(1000);
+                }
+            }
+
+        }
     }
 }
