@@ -24,7 +24,8 @@ public class ControlBouton implements ActionListener {
             model.tirerUneCarte();
             view.afficherCarte(model.getCartePiochee());
             view.desacDeck();
-            //view.initBoutonLancerDe();
+            view.initBoutonLancerDe();
+            view.repaint();
         }
         if(e.getSource() == view.jbValiderNbJoueur) {
             model.setNbJoueur( Integer.parseInt((String) view.getNombreJoueur().getSelectedItem()));
@@ -60,6 +61,11 @@ public class ControlBouton implements ActionListener {
             }
             game.newTour(game.getIteratorJoueur(), this, game.getNbJoueur()); //lance un nouveau tour
             view.setBoutonPasserTour(this);
+        }
+
+        if(e.getSource() == view.jbLancerDe){
+            System.out.print("lance");
+
         }
     }
 

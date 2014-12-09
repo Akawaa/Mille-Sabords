@@ -28,8 +28,18 @@ public class View extends JFrame {
     /*JBUTTON*/
     protected JButton jbContentDeck;
     protected JButton jbPasserTour;
+    protected JButton jbLancerDe;
     protected JButton jbValiderNbJoueur;
     protected JButton validerNomJoueur;
+
+    protected JButton jbContentDe1;
+    protected JButton jbContentDe2;
+    protected JButton jbContentDe3;
+    protected JButton jbContentDe4;
+    protected JButton jbContentDe5;
+    protected JButton jbContentDe6;
+    protected JButton jbContentDe7;
+    protected JButton jbContentDe8;
 
     /* JLabel */
     protected JLabel imageCartePiocher;
@@ -69,8 +79,10 @@ public class View extends JFrame {
 
     public void initJeu(Joueur joueurenCour, ControlBouton cb) throws IOException {
         initDeckGraphic();  // Initialisation du deck de jeu et de son affichage
+        initDe();//Initialise les dés
         initScoreJoueur(joueurenCour);  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
+        //initBoutonLancerDe();
         cb.actionBoutonPasserTour();
         setBoutonDeckGraphic(cb);
         afficherRegle();
@@ -137,6 +149,55 @@ public class View extends JFrame {
 
     }
 
+    public void initDe(){
+        jbContentDe1 = new JButton();
+        jbContentDe2 = new JButton();
+        jbContentDe3 = new JButton();
+        jbContentDe4 = new JButton();
+        jbContentDe5 = new JButton();
+        jbContentDe6 = new JButton();
+        jbContentDe7 = new JButton();
+        jbContentDe8 = new JButton();
+
+        jbContentDe1.setPreferredSize(new Dimension(68, 68));
+        jbContentDe2.setPreferredSize(new Dimension(68, 68));
+        jbContentDe3.setPreferredSize(new Dimension(68, 68));
+        jbContentDe4.setPreferredSize(new Dimension(68, 68));
+        jbContentDe5.setPreferredSize(new Dimension(68, 68));
+        jbContentDe6.setPreferredSize(new Dimension(68, 68));
+        jbContentDe7.setPreferredSize(new Dimension(68, 68));
+        jbContentDe8.setPreferredSize(new Dimension(68, 68));
+
+        Dimension size1 = jbContentDe1.getPreferredSize();
+        Dimension size2 = jbContentDe2.getPreferredSize();
+        Dimension size3 = jbContentDe3.getPreferredSize();
+        Dimension size4 = jbContentDe4.getPreferredSize();
+        Dimension size5 = jbContentDe5.getPreferredSize();
+        Dimension size6 = jbContentDe6.getPreferredSize();
+        Dimension size7 = jbContentDe7.getPreferredSize();
+        Dimension size8 = jbContentDe8.getPreferredSize();
+
+        jbContentDe1.setBounds(600, 400,size1.width, size1.height);
+        jbContentDe2.setBounds(670, 400,size2.width, size2.height);
+        jbContentDe3.setBounds(740, 400,size3.width, size3.height);
+        jbContentDe4.setBounds(810, 400,size4.width, size4.height);
+        jbContentDe5.setBounds(600, 470,size5.width, size5.height);
+        jbContentDe6.setBounds(670, 470,size6.width, size6.height);
+        jbContentDe7.setBounds(740, 470,size7.width, size7.height);
+        jbContentDe8.setBounds(810, 470,size8.width, size8.height);
+
+        general.add(jbContentDe1);
+        general.add(jbContentDe2);
+        general.add(jbContentDe3);
+        general.add(jbContentDe4);
+        general.add(jbContentDe5);
+        general.add(jbContentDe6);
+        general.add(jbContentDe7);
+        general.add(jbContentDe8);
+
+    }
+
+
     public void setBoutonDeckGraphic(ActionListener listener) {
         jbContentDeck.addActionListener(listener);
     }
@@ -147,9 +208,20 @@ public class View extends JFrame {
 
 
         Dimension sizePasserTour = jbPasserTour.getPreferredSize();
-        jbPasserTour.setBounds(850, 600, sizePasserTour.width, sizePasserTour.height);
+        jbPasserTour.setBounds(750, 550, sizePasserTour.width, sizePasserTour.height);
         general.add(jbPasserTour);
     }
+
+    public void initBoutonLancerDe() {
+        jbLancerDe = new JButton("Lancer les dés");
+        jbLancerDe.setPreferredSize(new Dimension(150, 75));
+
+
+        Dimension sizePasserTour = jbLancerDe.getPreferredSize();
+        jbLancerDe.setBounds(590, 550, sizePasserTour.width, sizePasserTour.height);
+        general.add(jbLancerDe);
+    }
+
     public void setBoutonPasserTour(ActionListener listener) {
         jbPasserTour.addActionListener(listener);
     }
@@ -277,7 +349,7 @@ public class View extends JFrame {
         return lines;
     }
 
-//-----------Vue de la documentation-------------------------
+    //-----------Vue de la documentation-------------------------
     public void Documentationview(){
         JOptionPane d = new JOptionPane();
 
