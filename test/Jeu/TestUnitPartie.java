@@ -124,6 +124,28 @@ public class TestUnitPartie {
         Assert.assertEquals(-300, partie.getJoueur(0).getPoints());
 
 
+        carteBateauPirate = new CarteBateauPirate("CarteBateauPirate2",3);
+        partie.getJoueur(0).setPoints(0);
+        listeFaces.clear();
+        for(int i=0;i<8;i++){
+            listeFaces.add("PERROQUET");
+        }
+        partie.getJoueur(0).setFacesTirees(listeFaces);
+        model.setCarte(carteBateauPirate);
+        partie.compterPointCarteBateauPirate(partie.getJoueur(0));
+        Assert.assertEquals(-500, partie.getJoueur(0).getPoints());
+
+        carteBateauPirate = new CarteBateauPirate("CarteBateauPirate2",4);
+        partie.getJoueur(0).setPoints(0);
+        listeFaces.clear();
+        for(int i=0;i<8;i++){
+            listeFaces.add("PERROQUET");
+        }
+        partie.getJoueur(0).setFacesTirees(listeFaces);
+        model.setCarte(carteBateauPirate);
+        partie.compterPointCarteBateauPirate(partie.getJoueur(0));
+        Assert.assertEquals(-1000, partie.getJoueur(0).getPoints());
+
     }
 
 }

@@ -35,7 +35,7 @@ public class Deck {
         * Boucles dégeus, une variable locale différente pour chaque boucle ==> Stupide au lieu de déclarer i dès le début.
         *
         * 3 millions 856 542 boucles pour initiliser le deck -__-" ==> pourris, heureusement qu'on a pas
-        * des collections avec plusieurs millions d'élèment à gerer, j'ai raccourci à 3 boucles
+        * des collections avec plusieurs millions d'élèments à gerer, j'ai raccourci à 3 boucles
         *
         * Bref que des erreurs dignes de semestre 1 et qui auraient pu etre évitées.
         * Fin de la réclamation au service client.

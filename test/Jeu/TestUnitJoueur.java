@@ -69,6 +69,8 @@ public class TestUnitJoueur {
     public void testCompterPointDesIdentiques(){
         Joueur joueur = new Joueur("Titi");
         ArrayList<String> listeFaces = new ArrayList<String>();
+
+        //Test nbr de dès identiques = 8
         for(int i=0;i<8;i++){
             listeFaces.add("PERROQUET");
         }
@@ -76,6 +78,7 @@ public class TestUnitJoueur {
         joueur.compterPointDesIdentiques();
         Assert.assertEquals(4000,joueur.getPoints());
 
+        //Test nbr de dès identiques = 4
         listeFaces.clear();
         joueur.setPoints(0);
         for(int i=0;i<4;i++){
@@ -88,9 +91,40 @@ public class TestUnitJoueur {
         joueur.compterPointDesIdentiques();
         Assert.assertEquals(400,joueur.getPoints());
 
+        //Test nbr de dès identiques = 5
         listeFaces.clear();
         joueur.setPoints(0);
-        for(int i=0;i<8;i++){
+        for(int i=0;i<5;i++){
+            listeFaces.add("SINGE");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(500,joueur.getPoints());
+
+        //Test nbr de dès identiques = 6
+        listeFaces.clear();
+        joueur.setPoints(0);
+        for(int i=0;i<6;i++){
+            listeFaces.add("SINGE");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(1000,joueur.getPoints());
+
+        //Test nbr de dès identiques = 7
+        listeFaces.clear();
+        joueur.setPoints(0);
+        for(int i=0;i<7;i++){
+            listeFaces.add("SINGE");
+        }
+        joueur.setFacesTirees(listeFaces);
+        joueur.compterPointDesIdentiques();
+        Assert.assertEquals(2000,joueur.getPoints());
+
+        //Test mise à jour des points si 3 tetes de mort.
+        listeFaces.clear();
+        joueur.setPoints(100);
+        for(int i=0;i<3;i++){
             listeFaces.add("MORT");
         }
         joueur.setFacesTirees(listeFaces);
