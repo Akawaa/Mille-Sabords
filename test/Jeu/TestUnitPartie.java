@@ -95,12 +95,57 @@ public class TestUnitPartie {
         }
         partie.getJoueur(0).setFacesTirees(listeFaces);
         partie.getJoueur(0).compterPointDesIdentiques();
-        System.out.println(partie.getJoueur(0).getPoints());
 
         model.setCarte(cartePirate);
         partie.compterPointCartePirate(partie.getJoueur(0));
-        System.out.println(partie.getJoueur(0).getPoints());
         Assert.assertEquals(8000, partie.getJoueur(0).getPoints());
 
     }
+
+    @Test
+    public void testCompterPointCarteBateauPirate() throws IOException, InterruptedException {
+        String nomJoueurs[] = new String[1];
+        nomJoueurs[0] = "toto";
+
+        ControlBouton controlBouton = Mockito.mock(ControlBouton.class);
+        View view = Mockito.mock(View.class);
+        Model model = new Model();
+        Partie partie = new Partie(1,nomJoueurs,view,model,controlBouton);
+        CarteBateauPirate carteBateauPirate = new CarteBateauPirate("CarteBateauPirate2",2);
+
+        partie.getJoueur(0).setPoints(0);
+        ArrayList<String> listeFaces = new ArrayList<String>();
+        for(int i=0;i<8;i++){
+            listeFaces.add("PERROQUET");
+        }
+        partie.getJoueur(0).setFacesTirees(listeFaces);
+        model.setCarte(carteBateauPirate);
+        partie.compterPointCarteBateauPirate(partie.getJoueur(0));
+        Assert.assertEquals(-300, partie.getJoueur(0).getPoints());
+
+
+        carteBateauPirate = new CarteBateauPirate("CarteBateauPirate2",3);
+        partie.getJoueur(0).setPoints(0);
+        listeFaces.clear();
+        for(int i=0;i<8;i++){
+            listeFaces.add("PERROQUET");
+        }
+        partie.getJoueur(0).setFacesTirees(listeFaces);
+        model.setCarte(carteBateauPirate);
+        partie.compterPointCarteBateauPirate(partie.getJoueur(0));
+        Assert.assertEquals(-500, partie.getJoueur(0).getPoints());
+
+        carteBateauPirate = new CarteBateauPirate("CarteBateauPirate2",4);
+        partie.getJoueur(0).setPoints(0);
+        listeFaces.clear();
+        for(int i=0;i<8;i++){
+            listeFaces.add("PERROQUET");
+        }
+        partie.getJoueur(0).setFacesTirees(listeFaces);
+        model.setCarte(carteBateauPirate);
+        partie.compterPointCarteBateauPirate(partie.getJoueur(0));
+        Assert.assertEquals(-1000, partie.getJoueur(0).getPoints());
+
+    }
+
 }

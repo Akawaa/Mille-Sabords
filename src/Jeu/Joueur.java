@@ -119,11 +119,17 @@ public class Joueur {
         }
     }
 
-    public void enleverPoints(int points) {
+    public void enleverPoints(int points) throws EnleverPointJamaisNegatif {
+        if(points <0){
+            throw new EnleverPointJamaisNegatif();
+        }
         this.points -= points;
     }
 
-    public void ajouterPoints(int points) {
+    public void ajouterPoints(int points) throws AjouterPointJamaisNegatif {
+        if(points <0){
+            throw new AjouterPointJamaisNegatif();
+        }
         this.points += points;
     }
 }

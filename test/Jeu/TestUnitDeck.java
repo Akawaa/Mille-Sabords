@@ -11,6 +11,52 @@ public class TestUnitDeck {
     public void TestInitTailleDeck() {
         Deck deck = new Deck();
         Assert.assertEquals(35, deck.tailleDeck());
+
+        int nbrCarteBateauPirate=0;
+        int nbrCarteDiamant=0;
+        int nbrCarteGardienne=0;
+        int nbrCarteIleTresor=0;
+        int nbrCartePieceOr=0;
+        int nbrCartePirate=0;
+        int nbrCarteTeteMort=0;
+        int nbrCarteAnimaux=0;
+
+        for(int i=0;i<35;i++){
+            if(deck.getDeckList().get(i) instanceof CarteBateauPirate){
+                nbrCarteBateauPirate++;
+            }
+            if(deck.getDeckList().get(i) instanceof CarteDiamant){
+                nbrCarteDiamant++;
+            }
+            if(deck.getDeckList().get(i) instanceof CarteGardienne){
+                nbrCarteGardienne++;
+            }
+            if(deck.getDeckList().get(i) instanceof CarteIleTresor){
+                nbrCarteIleTresor++;
+            }
+            if(deck.getDeckList().get(i) instanceof CartePieceOr){
+                nbrCartePieceOr++;
+            }
+            if(deck.getDeckList().get(i) instanceof CartePirate){
+                nbrCartePirate++;
+            }
+            if(deck.getDeckList().get(i) instanceof CarteTeteMort){
+                nbrCarteTeteMort++;
+            }
+            if(deck.getDeckList().get(i) instanceof CarteAnimaux){
+                nbrCarteAnimaux++;
+            }
+
+        }
+        Assert.assertEquals(6, nbrCarteBateauPirate);
+        Assert.assertEquals(4, nbrCarteDiamant);
+        Assert.assertEquals(4, nbrCarteGardienne);
+        Assert.assertEquals(4, nbrCarteIleTresor);
+        Assert.assertEquals(4, nbrCartePieceOr);
+        Assert.assertEquals(4, nbrCartePirate);
+        Assert.assertEquals(5, nbrCarteTeteMort);
+        Assert.assertEquals(4, nbrCarteAnimaux);
+
     }
 
     @Test
