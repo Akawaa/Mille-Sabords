@@ -98,18 +98,57 @@ public class Partie {
             System.out.println(occurrencesMort);
             if(occurrencesMort >= 4){
                 for(int i=0;i<nbJoueur;i++)
-                    joueurs[i].enleverPoints(occurrencesMort * 100);
+                    try {
+                        joueurs[i].enleverPoints(occurrencesMort * 100);
+                    } catch (EnleverPointJamaisNegatif enleverPointJamaisNegatif) {
+                        enleverPointJamaisNegatif.printStackTrace();
+                    }
             }
         }
     }
 
     public void compterPointCartePieceDiamant(Joueur joueur) {
-        if(model.getCartePiochee().getNom() == "CarteDiamant")
-            joueur.ajouterPoints(100);
+        if(model.getCartePiochee() instanceof CarteDiamant)
+            try {
+                joueur.ajouterPoints(100);
+            } catch (AjouterPointJamaisNegatif ajouterPointJamaisNegatif) {
+                ajouterPointJamaisNegatif.printStackTrace();
+            }
     }
 
     public void compterPointCartePirate(Joueur joueur) {
-        if(model.getCartePiochee().getNom() == "CartePirate")
+        if(model.getCartePiochee() instanceof CartePirate)
             joueur.setPoints(joueur.getPoints()*2);
+    }
+
+    public void compterPointCarteBateauPirate(Joueur joueur) {
+        if(model.getCartePiochee() instanceof CarteBateauPirate) {
+            int nbrSabreCarte = ((CarteBateauPirate)model.getCartePiochee()).getNbrSabre();
+            int occurrencesSabre = Collections.frequency(joueur.getFacesTirees(), "SABRE");
+            if(occurrencesSabre != nbrSabreCarte){
+                if(nbrSabreCarte == 2){
+                    try {
+                        joueur.enleverPoints(300);
+                    } catch (EnleverPointJamaisNegatif enleverPointJamaisNegatif) {
+                        enleverPointJamaisNegatif.printStackTrace();
+                    }
+                }
+                if(nbrSabreCarte == 3){
+                    try {
+                        joueur.enleverPoints(500);
+                    } catch (EnleverPointJamaisNegatif enleverPointJamaisNegatif) {
+                        enleverPointJamaisNegatif.printStackTrace();
+                    }
+                }
+                if(nbrSabreCarte == 4){
+                    try {
+                        joueur.enleverPoints(1000);
+                    } catch (EnleverPointJamaisNegatif enleverPointJamaisNegatif) {
+                        enleverPointJamaisNegatif.printStackTrace();
+                    }
+                }
+            }
+
+        }
     }
 }
