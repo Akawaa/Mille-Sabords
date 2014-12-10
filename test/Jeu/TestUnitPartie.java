@@ -16,10 +16,9 @@ public class TestUnitPartie {
         String nomJoueurs[] = new String[2];
         nomJoueurs[0] = "toto";
         nomJoueurs[1] = "tutu";
-        ControlBouton controlBouton = Mockito.mock(ControlBouton.class);
         View view = Mockito.mock(View.class);
         Model model = Mockito.mock(Model.class);
-        Partie partie = new Partie(2,nomJoueurs,view,model,controlBouton);
+        Partie partie = new Partie(2,nomJoueurs,view,model);
 
         ArrayList<String> listeFaces = new ArrayList<String>();
         for(int i=0;i<2;i++){
@@ -65,10 +64,9 @@ public class TestUnitPartie {
         nomJoueurs[0] = "toto";
         nomJoueurs[1] = "tutu";
 
-        ControlBouton controlBouton = Mockito.mock(ControlBouton.class);
         View view = Mockito.mock(View.class);
         Model model = new Model();
-        Partie partie = new Partie(2,nomJoueurs,view,model,controlBouton);
+        Partie partie = new Partie(2,nomJoueurs,view,model);
         CarteDiamant carteDiamant = new CarteDiamant("CarteDiamant");
 
         model.setCarte(carteDiamant);
@@ -82,10 +80,9 @@ public class TestUnitPartie {
         String nomJoueurs[] = new String[1];
         nomJoueurs[0] = "toto";
 
-        ControlBouton controlBouton = Mockito.mock(ControlBouton.class);
         View view = Mockito.mock(View.class);
         Model model = new Model();
-        Partie partie = new Partie(1,nomJoueurs,view,model,controlBouton);
+        Partie partie = new Partie(1,nomJoueurs,view,model);
         CartePirate cartePirate = new CartePirate("CartePirate");
 
         partie.getJoueur(0).setPoints(0);
@@ -107,10 +104,9 @@ public class TestUnitPartie {
         String nomJoueurs[] = new String[1];
         nomJoueurs[0] = "toto";
 
-        ControlBouton controlBouton = Mockito.mock(ControlBouton.class);
         View view = Mockito.mock(View.class);
         Model model = new Model();
-        Partie partie = new Partie(1,nomJoueurs,view,model,controlBouton);
+        Partie partie = new Partie(1,nomJoueurs,view,model);
         CarteBateauPirate carteBateauPirate = new CarteBateauPirate("CarteBateauPirate2",2);
 
         partie.getJoueur(0).setPoints(0);

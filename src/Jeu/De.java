@@ -39,7 +39,7 @@ public class De {
         return KEY[random.nextInt(6)];
     }
 
-    public ArrayList creerListFaces(int nbrDes) throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
+    public ArrayList<String> creerListFaces(int nbrDes) throws ListFacesInferieurA1Exception, ListFacesSuperieurA8Exception {
         if(nbrDes < 1){
             throw new ListFacesInferieurA1Exception();
         }

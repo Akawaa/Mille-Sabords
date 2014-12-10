@@ -3,6 +3,7 @@ package Jeu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Berenice on 14/11/14.
@@ -24,7 +25,8 @@ public class ControlBouton implements ActionListener {
             model.tirerUneCarte();
             view.afficherCarte(model.getCartePiochee());
             view.desacDeck();
-            //view.initBoutonLancerDe();
+            view.initBoutonLancerDe();
+            view.setBoutonLancerDe(this);
         }
         if(e.getSource() == view.jbValiderNbJoueur) {
             model.setNbJoueur( Integer.parseInt((String) view.getNombreJoueur().getSelectedItem()));
@@ -38,7 +40,8 @@ public class ControlBouton implements ActionListener {
                 nomDesJoueurs[i] = view.nomJoueur[i].getText();
             }
             try {
-                game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, model, this);
+                game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, model);
+                view.creerFaceDe();
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             } catch (IOException e1) {
@@ -46,24 +49,44 @@ public class ControlBouton implements ActionListener {
             }
             model.setPartie(game);
             view.setControlDeck(this);
+            view.desacBoutonPasserTour();
         }
 
         if (e.getSource() == view.jbPasserTour){
-            System.out.print("clic");
-            view.activDeck();
-            //ControlBouton cb = new ControlBouton(model, view);
             view.removeAllElements();
             game.setFinTour(true);
             game.setIteratorJoueur(game.getIteratorJoueur() + 1); //passe au joueur suivant
             if (game.getIteratorJoueur() >= game.getNbJoueur()) {
                 game.setIteratorJoueur(0);
             }
-            game.newTour(game.getIteratorJoueur(), this, game.getNbJoueur()); //lance un nouveau tour
+            game.newTour(game.getIteratorJoueur(), game.getNbJoueur()); //lance un nouveau tour
             view.setBoutonPasserTour(this);
+            view.setControlDeck(this);
+            view.desacBoutonPasserTour();
         }
-    }
 
-    public void actionBoutonPasserTour() {
-        view.setBoutonPasserTour(this);
+        if(e.getSource() == view.jbLancerDe) {
+            view.supprimerLesDe();
+            view.setBoutonPasserTour(this);
+            view.activBoutonPasserTour();
+
+            // Création d'un dé pour tirer des faces
+            De d = new De();
+
+            // Affectation au joueur en cours un nombre de face de dé (Pour le moment 8 de base)
+            try {
+                game.getJoueur(game.getIteratorJoueur()).setFacesTirees(d.creerListFaces(8));
+            } catch(ListFacesInferieurA1Exception l) {
+                System.out.println(l.getMessage());
+            } catch(ListFacesSuperieurA8Exception m) {
+                System.out.println(m.getMessage());
+            }
+            for(int a = 0; a < game.getJoueur(game.getIteratorJoueur()).getFacesTirees().size(); a++) {
+                System.out.println(game.getJoueur(game.getIteratorJoueur()).getFacesTirees().get(a));
+            }
+            // Affichage des faces tiré par le joueur
+            view.afficherFaceDe( game.getJoueur(game.getIteratorJoueur()).getFacesTirees());
+            view.setBoutonLancerDe(this);
+        }
     }
 }
