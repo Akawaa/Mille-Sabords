@@ -98,14 +98,22 @@ public class Partie {
             System.out.println(occurrencesMort);
             if(occurrencesMort >= 4){
                 for(int i=0;i<nbJoueur;i++)
-                    joueurs[i].enleverPoints(occurrencesMort * 100);
+                    try {
+                        joueurs[i].enleverPoints(occurrencesMort * 100);
+                    } catch (EnleverPointJamaisNegatif enleverPointJamaisNegatif) {
+                        enleverPointJamaisNegatif.printStackTrace();
+                    }
             }
         }
     }
 
     public void compterPointCartePieceDiamant(Joueur joueur) {
         if(model.getCartePiochee() instanceof CarteDiamant)
-            joueur.ajouterPoints(100);
+            try {
+                joueur.ajouterPoints(100);
+            } catch (AjouterPointJamaisNegatif ajouterPointJamaisNegatif) {
+                ajouterPointJamaisNegatif.printStackTrace();
+            }
     }
 
     public void compterPointCartePirate(Joueur joueur) {
@@ -119,13 +127,25 @@ public class Partie {
             int occurrencesSabre = Collections.frequency(joueur.getFacesTirees(), "SABRE");
             if(occurrencesSabre != nbrSabreCarte){
                 if(nbrSabreCarte == 2){
-                    joueur.enleverPoints(300);
+                    try {
+                        joueur.enleverPoints(300);
+                    } catch (EnleverPointJamaisNegatif enleverPointJamaisNegatif) {
+                        enleverPointJamaisNegatif.printStackTrace();
+                    }
                 }
                 if(nbrSabreCarte == 3){
-                    joueur.enleverPoints(500);
+                    try {
+                        joueur.enleverPoints(500);
+                    } catch (EnleverPointJamaisNegatif enleverPointJamaisNegatif) {
+                        enleverPointJamaisNegatif.printStackTrace();
+                    }
                 }
                 if(nbrSabreCarte == 4){
-                    joueur.enleverPoints(1000);
+                    try {
+                        joueur.enleverPoints(1000);
+                    } catch (EnleverPointJamaisNegatif enleverPointJamaisNegatif) {
+                        enleverPointJamaisNegatif.printStackTrace();
+                    }
                 }
             }
 

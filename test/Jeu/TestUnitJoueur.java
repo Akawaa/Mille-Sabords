@@ -42,6 +42,29 @@ public class TestUnitJoueur {
         Assert.assertTrue(joueur.isTeteDeMort());
     }
 
+    @Test(expected = EnleverPointJamaisNegatif.class)
+    public void testEnleverPoint() throws EnleverPointJamaisNegatif {
+        Joueur joueur = new Joueur("Coco");
+        joueur.setPoints(2000);
+        Assert.assertEquals(2000,joueur.getPoints());
+        joueur.enleverPoints(500);
+        Assert.assertEquals(1500,joueur.getPoints());
+
+        joueur.enleverPoints(-500);
+    }
+
+    @Test(expected = AjouterPointJamaisNegatif.class)
+    public void testAjouterPointJamaisNegatif() throws AjouterPointJamaisNegatif {
+        Joueur joueur = new Joueur("Coco");
+        joueur.setPoints(2000);
+        Assert.assertEquals(2000,joueur.getPoints());
+        joueur.ajouterPoints(500);
+        Assert.assertEquals(2500,joueur.getPoints());
+
+        joueur.ajouterPoints(-500);
+
+    }
+
     @Test
     public void testCompterPointDesIdentiques(){
         Joueur joueur = new Joueur("Titi");
