@@ -2,7 +2,6 @@ package Jeu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -44,7 +43,7 @@ public class ControlMenu implements ActionListener {
 
         //Enregistrer la partie (test)
         if (event.getSource() == view.enregistrerPartie) {
-            System.out.print("kaka");
+            System.out.print("EnregistrementPartie");
         }
     }
 }
