@@ -27,7 +27,6 @@ public class Joueur {
         premierLance = true;
         teteDeMort = false;
         nbrDes = 8;
-        //score = 0; //Initialisation à 0
         points = 0;
     }
 
@@ -131,5 +130,9 @@ public class Joueur {
             throw new AjouterPointJamaisNegatif();
         }
         this.points += points;
+    }
+
+    public void remiseA0Des() {
+        nbrDes = 8;
     }
 }
