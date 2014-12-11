@@ -25,7 +25,7 @@ public class ControlMenu implements ActionListener {
             /*
             * créer un nouveau modele
             * faire vue.dispose()
-            * controlGroup(model)*/
+            * controlGroup(model) */
             Model model1 = new Model();
             view.dispose();
             try {

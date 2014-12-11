@@ -286,7 +286,7 @@ public class View extends JFrame {
 
     public void afficherFaceDe(ArrayList<String> facesTirees) {
         for(int a = 0; a < facesTirees.size(); a++) {
-            //jbTableFaceTirer[a].setText(facesTirees.get(a));
+            ///jbTableFaceTirer[a].setText(facesTirees.get(a));
             jbTableFaceTirer[a].setIcon(De.getImageIcon(facesTirees.get(a)));
             general.add(jbTableFaceTirer[a]);
         }

@@ -28,6 +28,7 @@ public class De {
         KEY[3] = "PERROQUET";
         KEY[4] = "DIAMANT";
         KEY[5] = "MORT";
+        
         faces = new HashMap();
         faces.put(KEY[0],new ImageIcon(this.getClass().getResource("./img/singe.png")));
         faces.put(KEY[1],new ImageIcon(this.getClass().getResource("./img/sabre.png")));
