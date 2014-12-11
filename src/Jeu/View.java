@@ -271,9 +271,9 @@ public class View extends JFrame {
         jbLancerDe.addActionListener(listener);
     }
 
-    public void creerFaceDe() {
-        jbTableFaceTirer = new JButton[8];
-        for(int a = 0; a < 8; a++) {
+    public void afficherFaceDe(ArrayList<String> facesTirees) {
+        jbTableFaceTirer = new JButton[facesTirees.size()];
+        for(int a = 0; a < facesTirees.size(); a++) {
             jbTableFaceTirer[a] = new JButton();
             jbTableFaceTirer[a].setPreferredSize(new Dimension(90, 90));
             if(a < 4) {
@@ -281,12 +281,6 @@ public class View extends JFrame {
             } else {
                 jbTableFaceTirer[a].setBounds(600+(a-4)*95, 350, 90, 90);
             }
-        }
-    }
-
-    public void afficherFaceDe(ArrayList<String> facesTirees) {
-        for(int a = 0; a < facesTirees.size(); a++) {
-            ///jbTableFaceTirer[a].setText(facesTirees.get(a));
             jbTableFaceTirer[a].setIcon(De.getImageIcon(facesTirees.get(a)));
             general.add(jbTableFaceTirer[a]);
         }
@@ -297,7 +291,16 @@ public class View extends JFrame {
         for(int i = 0; i < jbTableFaceTirer.length; i++) {
             general.remove(jbTableFaceTirer[i]);
         }
+        jbTableFaceTirer = null;
         repaint();
+    }
+
+    public JButton[] getJbTableFaceTirer() {
+        return jbTableFaceTirer;
+    }
+
+    public void activFaceDe() {
+
     }
 
     /* ******************** Partie gestion Documentation ************************* */
@@ -349,8 +352,6 @@ public class View extends JFrame {
         //Et enfin, la rendre visible
         fenetre.setVisible(true);
     }
-
-
 
 //---------Fin vue de la documentation---------------
 

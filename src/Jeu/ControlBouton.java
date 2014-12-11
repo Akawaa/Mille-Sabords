@@ -41,7 +41,6 @@ public class ControlBouton implements ActionListener {
             }
             try {
                 game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, model);
-                view.creerFaceDe();
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             } catch (IOException e1) {
@@ -66,7 +65,10 @@ public class ControlBouton implements ActionListener {
         }
 
         if(e.getSource() == view.jbLancerDe) {
-            view.supprimerLesDe();
+            if(view.getJbTableFaceTirer() != null) {
+                view.supprimerLesDe();
+            }
+
             view.setBoutonPasserTour(this);
             view.activBoutonPasserTour();
 
@@ -75,18 +77,17 @@ public class ControlBouton implements ActionListener {
 
             // Affectation au joueur en cours un nombre de face de dé (Pour le moment 8 de base)
             try {
-                game.getJoueur(game.getIteratorJoueur()).setFacesTirees(d.creerListFaces(8));
+                game.getJoueur(game.getIteratorJoueur()).setFacesTirees(d.creerListFaces(6));
             } catch(ListFacesInferieurA1Exception l) {
                 System.out.println(l.getMessage());
             } catch(ListFacesSuperieurA8Exception m) {
                 System.out.println(m.getMessage());
             }
-            for(int a = 0; a < game.getJoueur(game.getIteratorJoueur()).getFacesTirees().size(); a++) {
-                System.out.println(game.getJoueur(game.getIteratorJoueur()).getFacesTirees().get(a));
-            }
-            System.out.println("\n");
             // Affichage des faces tiré par le joueur
-            view.afficherFaceDe( game.getJoueur(game.getIteratorJoueur()).getFacesTirees());
+            view.afficherFaceDe(game.getJoueur(game.getIteratorJoueur()).getFacesTirees());
+
+            // Activation des listener du dé
+            view.activFaceDe();
         }
     }
 }
