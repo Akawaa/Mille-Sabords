@@ -84,9 +84,9 @@ public class ControlBouton implements ActionListener {
             for(int a = 0; a < game.getJoueur(game.getIteratorJoueur()).getFacesTirees().size(); a++) {
                 System.out.println(game.getJoueur(game.getIteratorJoueur()).getFacesTirees().get(a));
             }
+            System.out.println("\n");
             // Affichage des faces tiré par le joueur
             view.afficherFaceDe( game.getJoueur(game.getIteratorJoueur()).getFacesTirees());
-            view.setBoutonLancerDe(this);
         }
     }
 }
