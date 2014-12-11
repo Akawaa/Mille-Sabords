@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+
 /**
  * Created by Berenice on 14/11/14.
  */
@@ -36,21 +37,32 @@ public class ControlBouton implements ActionListener {
             view.setValiderNomJoueurListener(this);
         }
         if(e.getSource() == view.validerNomJoueur) {
-            String[] nomDesJoueurs = new String[view.nomJoueur.length];
-            for(int i=0;i<nomDesJoueurs.length;i++) {
-                nomDesJoueurs[i] = view.nomJoueur[i].getText();
+            for(int i=0;i<model.getNbJoueur();i++) {
+                String[] nomJoueur = new String[model.getNbJoueur()];
+                nomJoueur[i] = view.nomJoueur[i].getText();
+                if (nomJoueur[i].compareTo(new String("")) == 0) {
+                    view.creerDialogErr("Noms manquants");
+                    break;
+                } else {
+
+                    String[] nomDesJoueurs = new String[view.nomJoueur.length];
+                    for (int j = 0; j < nomDesJoueurs.length; j++) {
+                        nomDesJoueurs[j] = view.nomJoueur[j].getText();
+                    }
+                    try {
+                        game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, model);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    model.setPartie(game);
+                    view.setControlDeck(this);
+                    view.desacBoutonPasserTour();
+                    view.setListenerMenuPartieLancee(controlMenu);
+                }
             }
-            try {
-                game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, model);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-            model.setPartie(game);
-            view.setControlDeck(this);
-            view.desacBoutonPasserTour();
-            view.setListenerMenuPartieLancee(controlMenu);
+
         }
 
         if (e.getSource() == view.jbPasserTour){

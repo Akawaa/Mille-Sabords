@@ -58,6 +58,8 @@ public class View extends JFrame {
     /* boolean pour savoir si il faut implémenter le menu de gestion Partie ou pas*/
     private boolean etatMenuGestionPartie = false;
 
+    public JOptionPane jop;
+
     public View() throws IOException {
         setSize(1300,720);       // Définition de la taille de la fenêtre de jeu
         setResizable(false);    // Taille fixe afin d'éviter les problèmes de positionnement
@@ -262,17 +264,17 @@ public class View extends JFrame {
         nomJoueur = new JTextField[nbJoueur];
         int i;
         for(i=0;i<nbJoueur;i++) {
-            JLabel joueurARemplir = new JLabel("Joueur " + i + " : ");
-            joueurARemplir.setBounds(400,50+i*100,200, 30);
+            JLabel joueurARemplir = new JLabel("Joueur " + (i+1) + " : ");
+            joueurARemplir.setBounds(500,50+i*100,200, 30);
             general.add(joueurARemplir);
 
             nomJoueur[i] = new JTextField();
-            nomJoueur[i].setBounds(400,100+i*100,200, 30);
+            nomJoueur[i].setBounds(450,100+i*100,200, 30);
             general.add(nomJoueur[i]);
         }
 
         validerNomJoueur = new JButton("Valider");
-        validerNomJoueur.setBounds(400,150+i*100,200, 30);
+        validerNomJoueur.setBounds(500,100+i*100,100, 40);
         general.add(validerNomJoueur);
 
         bullePirate("bulleNomJoueur.png");
@@ -416,7 +418,7 @@ public class View extends JFrame {
         JFrame fenetre = new JFrame();
 
         //Définit un titre pour notre fenêtre
-        fenetre.setTitle("Ma première fenêtre Java");
+        fenetre.setTitle("Commment jouer ?");
         //Définit sa taille : 400 pixels de large et 100 pixels de haut
         fenetre.setSize(800, 720);
         fenetre.getContentPane().add(getDocumentation());
@@ -433,4 +435,9 @@ public class View extends JFrame {
 
 //---------Fin vue de la documentation---------------
 
+    public void creerDialogErr(String s){
+        jop = new JOptionPane();
+        jop.showMessageDialog(null, s, "Erreur", JOptionPane.ERROR_MESSAGE);
+
+    }
 }
