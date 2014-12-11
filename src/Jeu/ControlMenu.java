@@ -2,6 +2,7 @@ package Jeu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -10,6 +11,7 @@ import java.io.IOException;
 public class ControlMenu implements ActionListener {
     private Model model;
     private View view;
+    private Partie partie;
 
     public ControlMenu(Model model, View view) {
         this.model = model;
@@ -38,6 +40,11 @@ public class ControlMenu implements ActionListener {
         //Action sur le bouton help
         if (event.getSource() == view.help){
             view.Documentationview();
+        }
+
+        //Enregistrer la partie (test)
+        if (event.getSource() == view.enregistrerPartie) {
+            System.out.print("kaka");
         }
     }
 }
