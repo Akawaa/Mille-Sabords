@@ -3,7 +3,6 @@ package Jeu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Berenice on 14/11/14.
@@ -65,6 +64,7 @@ public class ControlBouton implements ActionListener {
             if (game.getIteratorJoueur() >= game.getNbJoueur()) {
                 game.setIteratorJoueur(0);
             }
+            game.compterPointTotal(game.getJoueur(game.getIteratorJoueur())); //On compte les points
             game.setAluiJoueur(true, game.joueurs[game.getIteratorJoueur()]); //passe l'état de la variable boolean du joueur qui commence son tour à "true"
             game.newTour(game.getIteratorJoueur(), game.getNbJoueur()); //lance un nouveau tour
             view.setBoutonPasserTour(this);
@@ -76,15 +76,14 @@ public class ControlBouton implements ActionListener {
             if(view.getJbTableFaceTirer() != null) {
                 view.supprimerLesDe();
             }
+
             view.setBoutonPasserTour(this);
             view.activBoutonPasserTour();
 
-            // Création d'un dé pour tirer des faces
-            De d = new De();
-
             // Affectation au joueur en cours un nombre de face de dé (Pour le moment 8 de base)
             try {
-                game.getJoueur(game.getIteratorJoueur()).setFacesTirees(d.creerListFaces(8));
+                game.getJoueur(game.getIteratorJoueur()).lancerLesDes();
+                game.compterPointTotal(game.getJoueur(game.getIteratorJoueur()));
             } catch(ListFacesInferieurA1Exception l) {
                 System.out.println(l.getMessage());
             } catch(ListFacesSuperieurA8Exception m) {

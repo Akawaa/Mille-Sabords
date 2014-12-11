@@ -47,14 +47,7 @@ public class Partie {
         catch(IOException ex){
             System.out.println (ex.toString());
         }
-        try {
-            joueurs[getIteratorJoueur()].lancerLesDes();
-        } catch (ListFacesInferieurA1Exception e) {
-            e.printStackTrace();
-        } catch (ListFacesSuperieurA8Exception e) {
-            e.printStackTrace();
-        }
-        joueurs[getIteratorJoueur()].compterPointDesIdentiques();
+        joueurs[getIteratorJoueur()].remiseA0Des();
     }
 
     /********GETTERS AND SETTERS******/
@@ -154,5 +147,15 @@ public class Partie {
         ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(filename));
         o.writeObject(p);
         o.close();
+    }
+
+    public void compterPointTotal(Joueur joueur){
+        joueur.teteDeMortDe();
+        joueur.compterPointDiamantPiece();
+        compterPoint4TeteDeMort(joueur);
+        compterPointCartePieceDiamant(joueur);
+        compterPointCarteBateauPirate(joueur);
+        joueur.compterPointDesIdentiques();
+        compterPointCartePirate(joueur);
     }
 }
