@@ -36,6 +36,7 @@ public class View extends JFrame {
     protected JButton jbLancerDe;
 
     protected JButton[] jbTableFaceTirer;
+    protected ArrayList<JButton> jbListTeteMort;
 
     /* JLabel */
     protected JLabel imageCartePiocher;
@@ -56,8 +57,6 @@ public class View extends JFrame {
 
     /* boolean pour savoir si il faut implémenter le menu de gestion Partie ou pas*/
     private boolean etatMenuGestionPartie = false;
-
-
 
     public View() throws IOException {
         setSize(1300,720);       // Définition de la taille de la fenêtre de jeu
@@ -327,6 +326,56 @@ public class View extends JFrame {
 
     public void activFaceDe() {
 
+    }
+
+    public void ajouterTeteMort() {
+        if(jbListTeteMort == null) {
+            jbListTeteMort = new ArrayList<JButton>();
+        }
+        JButton bouttonMort = new JButton();
+        bouttonMort.setPreferredSize(new Dimension(90, 90));
+        bouttonMort.setIcon(De.getImageIcon("MORT"));
+        jbListTeteMort.add(bouttonMort);
+    }
+
+    public ArrayList<String> supprimerTeteMort(ArrayList<String> face) {
+        for(int i=0;i<face.size();i++) {
+            if(face.get(i).equals("MORT")) {
+                ajouterTeteMort();
+                face.remove(i);
+                i--;
+            }
+        }
+        return face;
+    }
+
+    public void supprimerTouteTeteMort() {
+        initAffichageTeteMort();
+        jbListTeteMort = null;
+        repaint();
+    }
+
+    public void initAffichageTeteMort() {
+        if(jbListTeteMort != null) {
+            for(int i = 0; i < jbListTeteMort.size(); i++) {
+                general.remove(jbListTeteMort.get(i));
+            }
+            repaint();
+        }
+    }
+
+    public void afficherTeteMort() {
+        if(jbListTeteMort != null) {
+            for(int i = 0; i < jbListTeteMort.size(); i++) {
+                jbListTeteMort.get(i).setBounds(1200, 200+i*95, 90, 90);
+                general.add(jbListTeteMort.get(i));
+            }
+            repaint();
+        }
+    }
+
+    public ArrayList<JButton> getJbListTeteMort() {
+        return jbListTeteMort;
     }
 
     /* ******************** Partie gestion Documentation ************************* */
