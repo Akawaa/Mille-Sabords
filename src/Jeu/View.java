@@ -65,8 +65,9 @@ public class View extends JFrame {
         getContentPane().add(general);
 
         initMenu();
-        this.setTitle("Jeu MilleSabords");
-        this.setIconImage(new ImageIcon(this.getClass().getResource("img/icone_jeu.png")).getImage()); //Affiche une icone d'application
+
+        this.setTitle("Jeu MilleSabords"); //Affiche un nom pour l'application
+        this.setIconImage(new ImageIcon(this.getClass().getResource("img/icone.png")).getImage()); //Affiche une icone d'application
 
         // ***************** Initialisation de la vue en attendant le nombre de joueur
         nombreJoueur();
