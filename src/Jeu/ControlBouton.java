@@ -38,13 +38,13 @@ public class ControlBouton implements ActionListener {
             view.setValiderNomJoueurListener(this);
         }
         if(e.getSource() == view.validerNomJoueur) {
-            for(int i=0;i<model.getNbJoueur();i++) {
+            /*for(int i=0;i<model.getNbJoueur();i++) {
                 String[] nomJoueur = new String[model.getNbJoueur()];
                 nomJoueur[i] = view.nomJoueur[i].getText();
                 if (nomJoueur[i].compareTo(new String("")) == 0) {
                     view.creerDialogErr("Noms manquants");
-                    break;
-                } else {
+
+                } else {*/
 
                     String[] nomDesJoueurs = new String[view.nomJoueur.length];
                     for (int j = 0; j < nomDesJoueurs.length; j++) {
@@ -61,8 +61,8 @@ public class ControlBouton implements ActionListener {
                     view.setControlDeck(this);
                     view.desacBoutonPasserTour();
                     view.setListenerMenuPartieLancee(controlMenu);
-                }
-            }
+                //}
+            //}
 
         }
 

@@ -1,6 +1,5 @@
 package Jeu;
 
-import jdk.nashorn.internal.ir.LiteralNode;
 
 import javax.swing.*;
 import java.awt.*;
