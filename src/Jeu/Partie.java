@@ -145,4 +145,8 @@ public class Partie {
 
         }
     }
+
+    public void setAluiJoueur(boolean b, Joueur joueur) {
+        joueur.setAlui(b);
+    }
 }
