@@ -334,10 +334,22 @@ public class View extends JFrame {
 
 //-----------Vue de la documentation-------------------------
     public void Documentationview(){
-        JOptionPane d = new JOptionPane();
+        JFrame fenetre = new JFrame();
 
-        d.showMessageDialog(null,
-                getDocumentation());
+        //Définit un titre pour notre fenêtre
+        fenetre.setTitle("Ma première fenêtre Java");
+        //Définit sa taille : 400 pixels de large et 100 pixels de haut
+        fenetre.setSize(800, 720);
+        fenetre.getContentPane().add(getDocumentation());
+        JScrollPane scroll = new JScrollPane(getDocumentation());
+        fenetre.getContentPane().add(scroll);
+
+        //Nous demandons maintenant à notre objet de se positionner au centre
+        fenetre.setLocationRelativeTo(null);
+        //Termine le processus lorsqu'on clique sur la croix rouge
+        //fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Et enfin, la rendre visible
+        fenetre.setVisible(true);
     }
 
 
