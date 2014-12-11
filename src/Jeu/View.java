@@ -1,5 +1,7 @@
 package Jeu;
 
+import jdk.nashorn.internal.ir.LiteralNode;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -37,6 +39,7 @@ public class View extends JFrame {
 
     protected JButton[] jbTableFaceTirer;
     protected ArrayList<JButton> jbListTeteMort;
+    protected ArrayList<JButton> jbListDeGarde;
 
     /* JLabel */
     protected JLabel imageCartePiocher;
@@ -327,9 +330,13 @@ public class View extends JFrame {
         return jbTableFaceTirer;
     }
 
-    public void activFaceDe() {
-
+    public void activFaceDe(ActionListener listener) {
+        for(int i=0;i<jbTableFaceTirer.length;i++) {
+            jbTableFaceTirer[i].addActionListener(listener);
+        }
     }
+
+    /* ************************* Gestion des tetes de morts ************************* */
 
     public void ajouterTeteMort() {
         if(jbListTeteMort == null) {
@@ -379,6 +386,43 @@ public class View extends JFrame {
 
     public ArrayList<JButton> getJbListTeteMort() {
         return jbListTeteMort;
+    }
+
+    /* ******************************** Gestion des dés a garder ********************* */
+
+    public void ajouterDeGarde(JButton jbGarder) {
+        if(jbListDeGarde == null) {
+            jbListDeGarde = new ArrayList<JButton>();
+        }
+        jbListDeGarde.add(jbGarder);
+    }
+
+    public void supprimerDeGarde(int indice) {
+        jbListDeGarde.remove(indice);
+    }
+
+    public void supprimerToutDeGarde() {
+        if(jbListDeGarde != null) {
+            for(int i=0;i<jbListDeGarde.size();i++) {
+                supprimerDeGarde(i);
+            }
+            jbListDeGarde = null;
+            repaint();
+        }
+    }
+
+    public void afficherDeGarde() {
+        if(jbListDeGarde != null) {
+            for(int i = 0; i < jbListDeGarde.size(); i++) {
+                if(i < 4) {
+                    jbListDeGarde.get(i).setBounds(600+i*95, 5, 90, 90);
+                } else {
+                    jbListDeGarde.get(i).setBounds(600+(i-4)*95, 100, 90, 90);
+                }
+                general.add(jbListDeGarde.get(i));
+            }
+            repaint();
+        }
     }
 
     /* ******************** Partie gestion Documentation ************************* */

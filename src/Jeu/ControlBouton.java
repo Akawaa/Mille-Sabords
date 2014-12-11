@@ -3,6 +3,7 @@ package Jeu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Berenice on 14/11/14.
@@ -70,6 +71,7 @@ public class ControlBouton implements ActionListener {
             view.setBoutonPasserTour(this);
             view.setControlDeck(this);
             view.desacBoutonPasserTour();
+            view.supprimerToutDeGarde();
         }
 
         if(e.getSource() == view.jbLancerDe) {
@@ -100,7 +102,25 @@ public class ControlBouton implements ActionListener {
             view.afficherTeteMort();
 
             // Activation des listener du dé
-            view.activFaceDe();
+            view.activFaceDe(this);
+        }
+
+        if(view.getJbTableFaceTirer() != null) {
+            for(int i=0;i<view.getJbTableFaceTirer().length;i++) {
+                if(e.getSource() == view.jbTableFaceTirer[i]) {
+                    // Suppression de la liste des dés tirer
+                    ArrayList<String> listFace = game.getJoueur(game.getIteratorJoueur()).getFacesTirees();
+                    listFace.remove(i);
+                    game.getJoueur(game.getIteratorJoueur()).setFacesTirees(listFace);
+                    game.getJoueur(game.getIteratorJoueur()).setNbrDes(game.getJoueur(game.getIteratorJoueur()).getNbrDes()-1);
+
+                    // Ajout dans la liste des dés gardés et reload de la vue
+                    view.ajouterDeGarde(view.getJbTableFaceTirer()[i]);
+                    view.supprimerLesDe();
+                    view.afficherFaceDe(game.getJoueur(game.getIteratorJoueur()).getFacesTirees());
+                    view.afficherDeGarde();
+                }
+            }
         }
     }
 }
