@@ -14,18 +14,14 @@ public class Partie {
     boolean finPartie = false;
     boolean finTour = false;
     int iteratorJoueur = 0;
-    public int getIteratorJoueur;
     private int nbJoueur;
 
-    public Partie(int nbJoueur, String[] nomJoueur, View view, Model model, ControlBouton cb) throws InterruptedException, IOException {
+    public Partie(int nbJoueur, String[] nomJoueur, View view, Model model) throws InterruptedException, IOException {
         setNbJoueur(nbJoueur);
         System.out.print("nb joueur : " + getNbJoueur());
         this.view = view;
         this.model = model;
-        // Intérieur de la partie à faire
-        // --> Créer les joueurs
-        // --> Organiser les tours ...
-        // Pour le moment : load la vue
+
         int i =0;
         joueurs = new Joueur[nbJoueur];
 
@@ -37,23 +33,21 @@ public class Partie {
         view.afficherRegle();
 
         /*Initialisation du premier tour*/
-        newTour(iteratorJoueur, cb, nbJoueur);
-
+        newTour(iteratorJoueur, nbJoueur);
     }
 
     public Partie(Joueur[] joueurs) {
         this.joueurs = joueurs;
     }
 
-    public void newTour(int iteratorJoueur, ControlBouton cb, int nbJoueur) {
+    public void newTour(int iteratorJoueur, int nbJoueur) {
         try{
-            view.initJeu(joueurs[getIteratorJoueur()], cb);
+            view.initJeu(joueurs[getIteratorJoueur()]);
         }
         catch(IOException ex){
             System.out.println (ex.toString());
         }
         try {
-            System.out.println("Lancé des dès");
             joueurs[getIteratorJoueur()].lancerLesDes();
         } catch (ListFacesInferieurA1Exception e) {
             e.printStackTrace();
@@ -150,5 +144,9 @@ public class Partie {
             }
 
         }
+    }
+
+    public void setAluiJoueur(boolean b, Joueur joueur) {
+        joueur.setAlui(b);
     }
 }

@@ -150,5 +150,23 @@ public class TestUnitJoueur {
         Assert.assertEquals(400,joueur.getPoints());
     }
 
+    @Test
+    public void testRemiseA0Des(){
+        Joueur joueur = new Joueur("Titi");
+        ArrayList<String> listeFaces = new ArrayList<String>();
+        for(int i=0;i<6;i++){
+            listeFaces.add("DIAMANT");
+        }
+        for(int i=0;i<2;i++){
+            listeFaces.add("MORT");
+        }
+        joueur.setFacesTirees(listeFaces);
+        Assert.assertEquals(8,joueur.getNbrDes());
+        joueur.teteDeMortDe();
+        Assert.assertEquals(6,joueur.getNbrDes());
+        joueur.remiseA0Des();
+        Assert.assertEquals(8,joueur.getNbrDes());
+    }
+
 }
 

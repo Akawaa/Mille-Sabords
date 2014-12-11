@@ -19,6 +19,7 @@ public class Joueur {
     private boolean teteDeMort;
     private int nbrDes;
     private int points;
+    private boolean Alui = false;
 
     //Constructeur de joueur
     public Joueur(String nom){
@@ -27,7 +28,6 @@ public class Joueur {
         premierLance = true;
         teteDeMort = false;
         nbrDes = 8;
-        //score = 0; //Initialisation à 0
         points = 0;
     }
 
@@ -78,6 +78,14 @@ public class Joueur {
 
     public void setFacesTirees(ArrayList<String> facesTirees) {
         this.facesTirees = facesTirees;
+    }
+
+    public void setAlui(boolean newAlui) {
+        this.Alui = newAlui;
+    }
+
+    public boolean getAlui() {
+        return Alui;
     }
     //---------------------Fin GETTERS and SETTERS-----------
 
@@ -131,5 +139,9 @@ public class Joueur {
             throw new AjouterPointJamaisNegatif();
         }
         this.points += points;
+    }
+
+    public void remiseA0Des() {
+        nbrDes = 8;
     }
 }
