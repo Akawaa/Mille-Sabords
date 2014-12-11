@@ -69,7 +69,7 @@ public class De {
     }
 
 
-    public ImageIcon getImageIcon(String face){
+    /*public ImageIcon getImageIcon(String face){
         return (ImageIcon) faces.get(face);
-    }
+    }*/
 }
