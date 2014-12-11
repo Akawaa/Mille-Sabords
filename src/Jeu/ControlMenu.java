@@ -19,7 +19,6 @@ public class ControlMenu implements ActionListener {
     //Action sur le bouton quitter
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == view.exit) {
-            model.supprimerCarteRepertoireScore();
             System.exit(0);
         }
         if (event.getSource() == view.start) {

@@ -14,7 +14,7 @@ public class De {
     //HashMap composée de <K,V>
     // avec K = Nom de la face
     // avec V = image du dé
-    private HashMap faces;
+    private static HashMap faces;
 
     private Random random;
 
@@ -29,9 +29,12 @@ public class De {
         KEY[4] = "DIAMANT";
         KEY[5] = "MORT";
         faces = new HashMap();
-        for(int i=0;i<6;i++){
-            faces.put(KEY[i],new ImageIcon());
-        }
+        faces.put(KEY[0],new ImageIcon(this.getClass().getResource("./img/singe.png")));
+        faces.put(KEY[1],new ImageIcon(this.getClass().getResource("./img/sabre.png")));
+        faces.put(KEY[2],new ImageIcon(this.getClass().getResource("./img/piece.png")));
+        faces.put(KEY[3],new ImageIcon(this.getClass().getResource("./img/perroquet.png")));
+        faces.put(KEY[4],new ImageIcon(this.getClass().getResource("./img/diamant.png")));
+        faces.put(KEY[5],new ImageIcon(this.getClass().getResource("./img/mort.png")));
     }
 
     public String lanceDe() {
@@ -58,6 +61,10 @@ public class De {
     //------------------GETTERS and SETTERS
     public HashMap getFaces(){
         return faces;
+    }
+
+    public static ImageIcon getImageIcon(String key){
+        return (ImageIcon) faces.get(key);
     }
 
 
