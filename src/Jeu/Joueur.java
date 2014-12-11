@@ -66,6 +66,8 @@ public class Joueur {
         return nbrDes;
     }
 
+    public void setNbrDes(int nbrDes) { this.nbrDes = nbrDes; }
+
     public String getNom() { return nom;}
 
     public int getPoints() {
