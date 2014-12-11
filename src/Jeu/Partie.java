@@ -47,16 +47,14 @@ public class Partie {
         catch(IOException ex){
             System.out.println (ex.toString());
         }
-        /*try {
+        try {
             joueurs[getIteratorJoueur()].lancerLesDes();
         } catch (ListFacesInferieurA1Exception e) {
             e.printStackTrace();
         } catch (ListFacesSuperieurA8Exception e) {
             e.printStackTrace();
-        }*/
-        //joueurs[getIteratorJoueur()].compterPointDesIdentiques();
-        finTour = false;
-        joueurs[getIteratorJoueur()].remiseA0Des();
+        }
+        joueurs[getIteratorJoueur()].compterPointDesIdentiques();
     }
 
     /********GETTERS AND SETTERS******/
@@ -146,15 +144,5 @@ public class Partie {
             }
 
         }
-    }
-
-    public void compterPointTotal(Joueur joueur){
-        joueur.teteDeMortDe();
-        joueur.compterPointDiamantPiece();
-        compterPoint4TeteDeMort(joueur);
-        compterPointCartePieceDiamant(joueur);
-        compterPointCarteBateauPirate(joueur);
-        joueur.compterPointDesIdentiques();
-        compterPointCartePirate(joueur);
     }
 }

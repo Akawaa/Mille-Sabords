@@ -19,6 +19,7 @@ public class Joueur {
     private boolean teteDeMort;
     private int nbrDes;
     private int points;
+    private boolean Alui = false;
 
     //Constructeur de joueur
     public Joueur(String nom){
@@ -77,6 +78,14 @@ public class Joueur {
 
     public void setFacesTirees(ArrayList<String> facesTirees) {
         this.facesTirees = facesTirees;
+    }
+
+    public void setAlui(boolean newAlui) {
+        this.Alui = newAlui;
+    }
+
+    public boolean getAlui() {
+        return Alui;
     }
     //---------------------Fin GETTERS and SETTERS-----------
 

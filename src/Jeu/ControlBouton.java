@@ -54,7 +54,10 @@ public class ControlBouton implements ActionListener {
         if (e.getSource() == view.jbPasserTour){
             view.removeAllElements();
             game.setFinTour(true);
-            game.setIteratorJoueur(game.getIteratorJoueur() + 1); //passe au joueur suivant
+            game.setAluiJoueur(false, game.joueurs[game.getIteratorJoueur()]); //passe l'état de la variable boolean du joueur qui vient de terminer son tour à "false"
+            game.setIteratorJoueur(game.getIteratorJoueur()+1); //Incrémente l'itérateur du tableau qui séléctionne le joeuur qui joue
+            game.setAluiJoueur(true, game.joueurs[game.getIteratorJoueur()]); //passe l'état de la variable boolean du joueur qui commence son tour à "true"
+            game.setIteratorJoueur(game.getIteratorJoueur()); //passe au joueur suivant
             if (game.getIteratorJoueur() >= game.getNbJoueur()) {
                 game.setIteratorJoueur(0);
             }
