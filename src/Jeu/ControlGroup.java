@@ -17,8 +17,9 @@ public class ControlGroup {
 
         view = new View();
 
-        controlBouton = new ControlBouton(model,view);
         controlMenu = new ControlMenu(model,view);
+        controlBouton = new ControlBouton(model,view, controlMenu);
+
 
         view.display();
     }

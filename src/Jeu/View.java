@@ -215,6 +215,9 @@ public class View extends JFrame {
         start.addActionListener(controlMenu);
         help.addActionListener(controlMenu);
     }
+    public void setListenerMenuPartieLancee(ControlMenu cm) {
+        enregistrerPartie.addActionListener(cm);
+    }
     //---------------------------FIN Ajout des ActionListener sur le menu------------------
 
     public void bullePirate(String nom_image) {

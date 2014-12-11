@@ -1,6 +1,6 @@
 package Jeu;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Collections;
 
 /**
@@ -148,5 +148,11 @@ public class Partie {
 
     public void setAluiJoueur(boolean b, Joueur joueur) {
         joueur.setAlui(b);
+    }
+
+    public void savePartie(String filename, Partie p) throws IOException{
+        ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(filename));
+        o.writeObject(p);
+        o.close();
     }
 }

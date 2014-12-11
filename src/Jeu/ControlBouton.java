@@ -12,10 +12,12 @@ public class ControlBouton implements ActionListener {
     private Model model;
     private View view;
     protected Partie game = null;
+    private ControlMenu controlMenu = null;
 
-    public ControlBouton(Model model, View view) {
+    public ControlBouton(Model model, View view, ControlMenu controlMenu) {
         this.model = model;
         this.view = view;
+        this.controlMenu = controlMenu;
 
         view.setValiderNbJoueurListener(this);
     }
@@ -49,6 +51,7 @@ public class ControlBouton implements ActionListener {
             model.setPartie(game);
             view.setControlDeck(this);
             view.desacBoutonPasserTour();
+            view.setListenerMenuPartieLancee(controlMenu);
         }
 
         if (e.getSource() == view.jbPasserTour){
@@ -57,11 +60,12 @@ public class ControlBouton implements ActionListener {
             game.setFinTour(true);
             game.setAluiJoueur(false, game.joueurs[game.getIteratorJoueur()]); //passe l'état de la variable boolean du joueur qui vient de terminer son tour à "false"
             game.setIteratorJoueur(game.getIteratorJoueur()+1); //Incrémente l'itérateur du tableau qui séléctionne le joeuur qui joue
-            game.setAluiJoueur(true, game.joueurs[game.getIteratorJoueur()]); //passe l'état de la variable boolean du joueur qui commence son tour à "true"
+
             game.setIteratorJoueur(game.getIteratorJoueur()); //passe au joueur suivant
             if (game.getIteratorJoueur() >= game.getNbJoueur()) {
                 game.setIteratorJoueur(0);
             }
+            game.setAluiJoueur(true, game.joueurs[game.getIteratorJoueur()]); //passe l'état de la variable boolean du joueur qui commence son tour à "true"
             game.newTour(game.getIteratorJoueur(), game.getNbJoueur()); //lance un nouveau tour
             view.setBoutonPasserTour(this);
             view.setControlDeck(this);
