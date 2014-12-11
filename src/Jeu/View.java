@@ -22,9 +22,11 @@ public class View extends JFrame {
     /*MENU*/
     protected JMenuBar barMenu;
     protected JMenu menu;
+    protected JMenu gererPartie;
     protected JMenuItem start;
     protected JMenuItem help;
     protected JMenuItem exit;
+    protected JMenuItem enregistrerPartie;
 
     /*JBUTTON*/
     protected JButton jbContentDeck;
@@ -51,6 +53,10 @@ public class View extends JFrame {
 
     /* JTextField */
     JTextField[] nomJoueur;
+
+    /* boolean pour savoir si il faut implémenter le menu de gestion Partie ou pas*/
+    private boolean etatMenuGestionPartie = false;
+
 
 
     public View() throws IOException {
@@ -79,6 +85,16 @@ public class View extends JFrame {
         initScoreJoueur(joueurenCour);  // Initialisation du score du joueur en cours
         initBoutonPasserTour(); //Initalisation du bouton "passer son tour"
         afficherRegle();
+
+        if (!etatMenuGestionPartie) {
+            gererPartie = new JMenu("Partie");
+
+            //gererPartie
+            enregistrerPartie = new JMenuItem("Enregistrer la partie");
+            gererPartie.add(enregistrerPartie);
+            barMenu.add(gererPartie);
+            etatMenuGestionPartie = true;
+        }
     }
 
     public void afficherRegle() {
@@ -93,9 +109,16 @@ public class View extends JFrame {
 
         menu = new JMenu("Options");
 
+
+
+
+        //menu
         start = new JMenuItem("Nouvelle Partie");
         help = new JMenuItem("Comment jouer ?");
         exit = new JMenuItem("Quitter");
+
+
+        /*Ajout des JMenuItem aux JMenu*/
 
         menu.add(start);
         menu.add(help);
