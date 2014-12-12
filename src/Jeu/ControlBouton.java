@@ -38,33 +38,38 @@ public class ControlBouton implements ActionListener {
             view.setValiderNomJoueurListener(this);
         }
         if(e.getSource() == view.validerNomJoueur) {
-            /*for(int i=0;i<model.getNbJoueur();i++) {
+            int nomsRenseignés = 0;
+            for (int i = 0; i < model.getNbJoueur(); i++) {
                 String[] nomJoueur = new String[model.getNbJoueur()];
                 nomJoueur[i] = view.nomJoueur[i].getText();
-                if (nomJoueur[i].compareTo(new String("")) == 0) {
-                    view.creerDialogErr("Noms manquants");
+                if (nomJoueur[i].compareTo(new String("")) != 0) {
+                    nomsRenseignés++;
+                }
+            }
+            if (nomsRenseignés < model.getNbJoueur()) {
+                view.creerDialogErr("Noms manquants");
+            } else {
 
-                } else {*/
 
-                    String[] nomDesJoueurs = new String[view.nomJoueur.length];
-                    for (int j = 0; j < nomDesJoueurs.length; j++) {
-                        nomDesJoueurs[j] = view.nomJoueur[j].getText();
-                    }
-                    try {
-                        game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, model);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                    model.setPartie(game);
-                    view.setControlDeck(this);
-                    view.desacBoutonPasserTour();
-                    view.setListenerMenuPartieLancee(controlMenu);
-                //}
-            //}
+                String[] nomDesJoueurs = new String[view.nomJoueur.length];
+                for (int j = 0; j < nomDesJoueurs.length; j++) {
+                    nomDesJoueurs[j] = view.nomJoueur[j].getText();
+                }
+                try {
+                    game = new Partie(model.getNbJoueur(), nomDesJoueurs, view, model);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                model.setPartie(game);
+                view.setControlDeck(this);
+                view.desacBoutonPasserTour();
+                view.setListenerMenuPartieLancee(controlMenu);
 
+            }
         }
+
 
         if (e.getSource() == view.jbPasserTour){
             view.supprimerTouteTeteMort();
@@ -116,7 +121,6 @@ public class ControlBouton implements ActionListener {
             // Activation des listener du dé
             view.activFaceDe(this);
         }
-
         if(view.getJbTableFaceTirer() != null) {
             for(int i=0;i<view.getJbTableFaceTirer().length;i++) {
                 if(e.getSource() == view.jbTableFaceTirer[i]) {
